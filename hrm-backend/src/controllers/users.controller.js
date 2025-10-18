@@ -8,8 +8,14 @@ const baseSchema = Joi.object({
   email: Joi.string().email(),
   password: Joi.string().min(8).max(64),
   role: Joi.string().valid('admin','reclutador','tecnico','cliente'),
+  user_type: Joi.string().valid('temporal','fijo'),
   active: Joi.boolean()
 });
+
+const createSchema = baseSchema.fork(
+  ['full_name', 'email', 'password', 'role', 'user_type'],
+  schema => schema.required()
+);
 
 export const listUsers = async (req, res, next) => {
   try {
@@ -31,7 +37,7 @@ export const getUser = async (req, res, next) => {
 
 export const createUser = async (req, res, next) => {
   try {
-    const { value, error } = baseSchema.requiredKeys('full_name','email','password').validate(req.body);
+    const { value, error } = createSchema.validate(req.body);
     if (error) return res.status(400).json({ message: error.message });
     value.password = await bcrypt.hash(value.password, 12);
     const user = await User.create(value);

@@ -1,0 +1,5 @@
+/* Ajustes simples locales */
+.table th, .table td { white-space: nowrap; }
+.ml-2 { margin-left: 0.5rem; }
+.mr-2 { margin-right: 0.5rem; }
+

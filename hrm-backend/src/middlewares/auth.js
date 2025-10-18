@@ -1,11 +1,11 @@
-import jwt from 'jsonwebtoken';
+﻿import jwt from 'jsonwebtoken';
 import { env } from '../config/env.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
 export const requireAuth = (roles = []) => {
   // roles puede ser string o array
-  const allowed = Array.isArray(roles) ? roles : [roles];
+  const allowed = (Array.isArray(roles) ? roles : [roles]).filter(Boolean);
 
   return (req, res, next) => {
     try {
@@ -14,13 +14,15 @@ export const requireAuth = (roles = []) => {
       if (!token) return res.status(401).json({ message: 'Token requerido' });
 
       const payload = jwt.verify(token, env.jwt.secret);
-      req.user = payload; // { id, role }
-      if (allowed.length && !allowed.includes(payload.role)) {
+      const role = (payload?.role || '').toLowerCase();
+      req.user = { ...payload, role };
+      const allowedNormalized = allowed.map(r => r.toLowerCase());
+      if (allowedNormalized.length && !allowedNormalized.includes(role)) {
         return res.status(403).json({ message: 'No autorizado' });
       }
       next();
     } catch {
-      return res.status(401).json({ message: 'Token inválido o expirado' });
+      return res.status(401).json({ message: 'Token invÃ¡lido o expirado' });
     }
   };
 };
@@ -33,6 +35,8 @@ export const verifyToken = (req, res, next) => {
     req.user = decoded;
     next();
   } catch (err) {
-    res.status(401).json({ message: 'Token inválido o expirado' });
+    res.status(401).json({ message: 'Token invÃ¡lido o expirado' });
   }
 };
+
+

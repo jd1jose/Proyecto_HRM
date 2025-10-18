@@ -1,0 +1,101 @@
+﻿<div class="min-h-screen bg-gradient-to-r from-green-50 via-white to-orange-50 p-6">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-2xl font-semibold mb-2" style="color: var(--color-verde)">Usuarios temporales</h2>
+    <p class="text-gray-600 mb-6">Crea usuarios con vencimiento automÃ¡tico y gestiona su vigencia.</p>
+
+    <!-- Formulario -->
+    <form class="bg-white rounded shadow p-4 mb-6" (ngSubmit)="crear()" [formGroup]="form">
+      <div class="grid md:grid-cols-4 gap-4">
+        <div class="md:col-span-2">
+          <label>Nombre</label>
+          <input type="text" formControlName="nombre" placeholder="Nombre completo">
+          <div class="text-red-600 text-sm" *ngIf="f['nombre'].touched && f['nombre'].invalid">Ingrese al menos 2 caracteres.</div>
+        </div>
+        <div class="md:col-span-2">
+          <label>Email</label>
+          <input type="email" formControlName="email" placeholder="correo@dominio.com">
+          <div class="text-red-600 text-sm" *ngIf="f['email'].touched && f['email'].invalid">Correo invalido.</div>
+        </div>
+        <div class="md:col-span-2">
+          <label>Contraseña</label>
+          <input type="password" formControlName="password" placeholder="mínimo 8 caracteres">
+        </div>
+
+        <div>
+          <label>Tipo de usuario</label>
+          <div class="flex items-center gap-4 mt-2">
+            <label class="inline-flex items-center gap-2">
+              <input type="radio" formControlName="tipo" value="temporal"> Temporal
+            </label>
+            <label class="inline-flex items-center gap-2">
+              <input type="radio" formControlName="tipo" value="fijo"> Fijo
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label>Días de vigencia</label>
+          <input type="number" formControlName="dias" min="1">
+        </div>
+
+        <div>
+          <label>Rol</label>
+          <select formControlName="rol">
+            <option *ngFor="let r of roles" [value]="r">{{ r }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="mt-4 text-right">
+        <button type="submit" class="btn-primary" [disabled]="form.invalid">Crear</button>
+        <button type="button" class="btn-secondary ml-2" (click)="purgar()">Purgar expirados</button>
+      </div>
+    </form>
+
+    <!-- Lista -->
+    <div class="bg-white rounded shadow p-4">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="font-semibold">Registros</h3>
+        <span class="text-sm text-gray-500">{{ usuarios.length }} usuario(s)</span>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Rol</th>
+              <th>Tipo</th>
+              <th>Creado</th>
+              <th>Expira</th>
+              <th>Estado</th>
+              <th class="text-right">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let u of usuarios">
+              <td>{{ u.nombre }}</td>
+              <td>{{ u.email }}</td>
+              <td>{{ u.rol }}</td>
+              <td>{{ u.tipo || 'temporal' }}</td>
+              <td>{{ fmtFecha(u.creadoEn) }}</td>
+              <td>{{ fmtFecha(u.expiraEn) }}</td>
+              <td>
+                <span class="px-2 py-1 rounded text-white text-xs"
+                      [ngClass]="estado(u) === 'activo' ? 'bg-green-500' : 'bg-red-500'">
+                  {{ estado(u) === 'activo' ? 'Activo' : 'Expirado' }}
+                </span>
+              </td>
+              <td class="text-right">
+                <button class="btn-secondary mr-2" (click)="extender(u.id, 7)">+7 dÃ­as</button>
+                <button class="btn-danger" (click)="eliminar(u.id)">Eliminar</button>
+              </td>
+            </tr>
+            <tr *ngIf="usuarios.length === 0">
+              <td colspan="8" class="text-center text-gray-500 py-6">Sin usuarios temporales.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

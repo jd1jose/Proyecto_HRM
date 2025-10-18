@@ -1,38 +1,74 @@
-<nav class="bg-white shadow-md w-64 h-screen fixed left-0 top-0 flex flex-col">
+<nav class="bg-white shadow-md flex flex-col relative transition-all duration-200 h-full"
+     [ngClass]="{ 'w-64': !collapsed, 'w-16': collapsed }">
+  <!-- Toggle button -->
+  <button (click)="toggleCollapse()"
+          class="absolute top-3 right-3 bg-white border rounded-full w-7 h-7 flex items-center justify-center shadow hover:bg-gray-50"
+          aria-label="Alternar menú">
+    <span [innerHTML]="collapsed ? '&#9658;' : '&#9664;'"></span>
+  </button>
+
+  <!-- Logo -->
   <div class="p-6 border-b flex justify-center">
-    <img src="assets/logo-hrm.png" alt="HRM Consulting" class="h-12">
+    <img *ngIf="!collapsed" src="assets/logo-hrm.png" alt="HRM Consulting" class="h-12">
+    <div *ngIf="collapsed" class="text-lg font-semibold">HRM</div>
   </div>
 
   <ul class="flex-1 mt-6 space-y-1">
     <li>
-      <button (click)="navigateTo('/bandeja/principal')" 
-        class="w-full text-left px-6 py-2 hover:bg-green-100 flex items-center gap-2">
-        🏠 <span>Dashboard</span>
+      <button (click)="navigateTo('/bandeja/principal')"
+              class="w-full text-left px-4 py-2 hover:bg-green-100 flex items-center gap-2"
+              [ngClass]="{ 'justify-center': collapsed }">
+        <mat-icon fontIcon="dashboard" aria-hidden="true"
+                  class="text-2xl"
+                  style="color: var(--color-verde)"></mat-icon>
+        <span *ngIf="!collapsed">Dashboard</span>
       </button>
     </li>
     <li>
-      <button (click)="navigateTo('/vacantes')" 
-        class="w-full text-left px-6 py-2 hover:bg-green-100 flex items-center gap-2">
-        📋 <span>Vacantes</span>
+      <button (click)="navigateTo('/vacantes')"
+              class="w-full text-left px-4 py-2 hover:bg-green-100 flex items-center gap-2"
+              [ngClass]="{ 'justify-center': collapsed }">
+        <mat-icon fontIcon="folder_open" aria-hidden="true"
+                  class="text-2xl"
+                  style="color: var(--color-naranja)"></mat-icon>
+        <span *ngIf="!collapsed">Vacantes</span>
       </button>
     </li>
     <li>
-      <button (click)="navigateTo('/postulantes')" 
-        class="w-full text-left px-6 py-2 hover:bg-green-100 flex items-center gap-2">
-        👥 <span>Postulantes</span>
+      <button (click)="navigateTo('/postulantes')"
+              class="w-full text-left px-4 py-2 hover:bg-green-100 flex items-center gap-2"
+              [ngClass]="{ 'justify-center': collapsed }">
+        <mat-icon fontIcon="group" aria-hidden="true"
+                  class="text-2xl text-purple-600"></mat-icon>
+        <span *ngIf="!collapsed">Postulantes</span>
       </button>
     </li>
     <li>
-      <button (click)="navigateTo('/informes')" 
-        class="w-full text-left px-6 py-2 hover:bg-green-100 flex items-center gap-2">
-        🧾 <span>Informes</span>
+      <button (click)="navigateTo('/informes')"
+              class="w-full text-left px-4 py-2 hover:bg-green-100 flex items-center gap-2"
+              [ngClass]="{ 'justify-center': collapsed }">
+        <mat-icon fontIcon="bar_chart" aria-hidden="true"
+                  class="text-2xl text-blue-600"></mat-icon>
+        <span *ngIf="!collapsed">Informes</span>
+      </button>
+    </li>
+    <li>
+      <button (click)="navigateTo('/usuarios-temporales')"
+              class="w-full text-left px-4 py-2 hover:bg-green-100 flex items-center gap-2"
+              [ngClass]="{ 'justify-center': collapsed }">
+        <mat-icon fontIcon="person_add" aria-hidden="true"
+                  class="text-2xl text-teal-600"></mat-icon>
+        <span *ngIf="!collapsed">Usuarios temporales</span>
       </button>
     </li>
   </ul>
 
-  <div class="border-t p-4">
-    <button (click)="logout()" class="w-full text-left text-red-600 hover:bg-red-50 px-6 py-2 rounded-md flex items-center gap-2">
-      🚪 <span>Cerrar sesión</span>
+  <div class="border-t p-4 mt-auto">
+    <button (click)="logout()"
+            class="w-full text-left text-red-600 hover:bg-red-50 px-4 py-2 rounded-md flex items-center gap-2"
+            [ngClass]="{ 'justify-center': collapsed }">
+      <mat-icon fontIcon="logout" aria-hidden="true" class="text-2xl text-red-500"></mat-icon>
+      <span *ngIf="!collapsed">Cerrar sesi&oacute;n</span>
     </button>
   </div>
 </nav>

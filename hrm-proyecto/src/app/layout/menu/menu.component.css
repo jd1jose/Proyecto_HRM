@@ -1,0 +1,15 @@
+/* Fix the menu so it doesn't push content and stays on the left */
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 40;
+  display: block;
+}
+
+/* Smooth transitions for width and paddings */
+:host nav { transition: width 0.2s ease; height: 100%; }
+
+/* Optional: prevent text selection on toggle */
+button { user-select: none; }

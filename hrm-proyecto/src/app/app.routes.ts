@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { GestionVacanteComponent } from './gestion-vacante/gestion-vacante.component';
 import { GestionPostulanteComponent } from './gestion-postulante/gestion-postulante.component';
 import { GestionInformesComponent } from './gestion-informes/gestion-informes.component';
+import { UsuariosTemporalesComponent } from './usuarios-temporales/usuarios-temporales.component';
 
 export const routes: Routes = [
        { path: 'login', component: LoginComponent },
@@ -11,5 +12,6 @@ export const routes: Routes = [
        { path: 'vacantes', component: GestionVacanteComponent },
        { path: 'postulantes', component: GestionPostulanteComponent },
        { path: 'informes', component: GestionInformesComponent },
+       { path: 'usuarios-temporales', component: UsuariosTemporalesComponent },
        { path: '**', redirectTo: 'login' }
 ];

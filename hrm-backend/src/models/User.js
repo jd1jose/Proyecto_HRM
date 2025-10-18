@@ -15,6 +15,7 @@ export const initUser = (sequelize) => {
     email:    { type: DataTypes.STRING(150), allowNull: false, unique: true, validate: { isEmail: true } },
     password: { type: DataTypes.STRING(100), allowNull: false },
     role:     { type: DataTypes.ENUM('admin','reclutador','tecnico','cliente'), allowNull: false, defaultValue: 'reclutador' },
+    user_type: { type: DataTypes.ENUM('temporal','fijo'), allowNull: false, defaultValue: 'fijo' },
     active:   { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true }
   }, {
     sequelize,

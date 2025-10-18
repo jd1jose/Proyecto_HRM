@@ -1,2 +1,10 @@
-<app-menu *ngIf="isLoggedIn()"></app-menu>
-<router-outlet></router-outlet>
+<app-menu *ngIf="isLoggedIn()"
+          [collapsed]="menuCollapsed"
+          (collapsedChange)="menuCollapsed = $event"></app-menu>
+<div class="transition-all"
+     [ngClass]="{
+        'ml-64': isLoggedIn() && !menuCollapsed,
+        'ml-16': isLoggedIn() && menuCollapsed
+      }">
+  <router-outlet></router-outlet>
+</div>
