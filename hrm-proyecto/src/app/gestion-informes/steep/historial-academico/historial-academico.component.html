@@ -1,0 +1,233 @@
+
+<div [formGroup]="form">
+
+  <!-- ========== UNIVERSITARIO ========== -->
+  <h4 class="section-title">Universitario</h4>
+  <div class="tabla-wrapper">
+    <div class="tabla-header">
+      <button type="button" class="btn-add" (click)="agregarUniversitario()">+ Agregar Universidad</button>
+    </div>
+
+    <table class="table" formArrayName="universitario">
+      <thead>
+        <tr>
+          <th>Universitario</th>
+          <th>Carrera universitaria</th>
+          <th>Año inicio</th>
+          <th>Año final</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of universitario.controls; let i = index" [formGroupName]="i">
+          <td>
+            <span *ngIf="!u.get('editando')?.value">{{ u.get('nombre')?.value || '—' }}</span>
+            <input *ngIf="u.get('editando')?.value" formControlName="nombre" />
+          </td>
+          <td>
+            <span *ngIf="!u.get('editando')?.value">{{ u.get('carrera')?.value || '—' }}</span>
+            <input *ngIf="u.get('editando')?.value" formControlName="carrera" />
+          </td>
+          <td>
+            <span *ngIf="!u.get('editando')?.value">{{ u.get('anioInicio')?.value || '—' }}</span>
+            <input *ngIf="u.get('editando')?.value" type="number" formControlName="anioInicio" />
+          </td>
+          <td>
+            <span *ngIf="!u.get('editando')?.value">{{ u.get('anioFin')?.value || '—' }}</span>
+            <input *ngIf="u.get('editando')?.value" type="number" formControlName="anioFin" />
+          </td>
+          <td class="acciones">
+            <button *ngIf="!u.get('editando')?.value" class="btn-edit"
+              (click)="editarFila('universitario', i)">✏️</button>
+            <button *ngIf="u.get('editando')?.value" class="btn-save"
+              (click)="guardarFila('universitario', i)">💾</button>
+            <button class="btn-delete" (click)="eliminarUniversitario(i)">🗑</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ========== DIVERSIFICADO ========== -->
+  <h4 class="section-title">Diversificado</h4>
+  <div class="tabla-wrapper">
+    <div class="tabla-header">
+      <button type="button" class="btn-add" (click)="agregarDiversificado()">+ Agregar Diversificado</button>
+    </div>
+
+    <table class="table" formArrayName="diversificado">
+      <thead>
+        <tr>
+          <th>Institución educativa</th>
+          <th>Grado académico</th>
+          <th>Año</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let d of diversificado.controls; let i = index" [formGroupName]="i">
+          <td>
+            <span *ngIf="!d.get('editando')?.value">{{ d.get('institucion')?.value || '—' }}</span>
+            <input *ngIf="d.get('editando')?.value" formControlName="institucion" />
+          </td>
+          <td>
+            <span *ngIf="!d.get('editando')?.value">{{ d.get('titulo')?.value || '—' }}</span>
+            <input *ngIf="d.get('editando')?.value" formControlName="titulo" />
+          </td>
+          <td>
+            <span *ngIf="!d.get('editando')?.value">{{ d.get('anio')?.value || '—' }}</span>
+            <input *ngIf="d.get('editando')?.value" type="number" formControlName="anio" />
+          </td>
+
+          <td class="acciones">
+            <button *ngIf="!d.get('editando')?.value" class="btn-edit"
+              (click)="editarFila('diversificado', i)">✏️</button>
+            <button *ngIf="d.get('editando')?.value" class="btn-save"
+              (click)="guardarFila('diversificado', i)">💾</button>
+            <button class="btn-delete" (click)="eliminarDiversificado(i)">🗑</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ========== PRIMARIA / NIVEL MEDIO ========== -->
+  <h4 class="section-title">Primaria / Nivel Medio</h4>
+  <div class="tabla-wrapper">
+    <div class="tabla-header">
+      <button type="button" class="btn-add" (click)="agregarPrimaria()">+ Agregar Nivel Medio</button>
+    </div>
+
+    <table class="table" formArrayName="primaria">
+      <thead>
+        <tr>
+          <th>Institución educativa</th>
+          <th>Grado academico</th>
+          <th>Año</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of primaria.controls; let i = index" [formGroupName]="i">
+          <td>
+            <span *ngIf="!p.get('editando')?.value">{{ p.get('institucion')?.value || '—' }}</span>
+            <input *ngIf="p.get('editando')?.value" formControlName="institucion" />
+          </td>
+          <td>
+            <span *ngIf="!p.get('editando')?.value">{{ p.get('diploma')?.value || '—' }}</span>
+            <input *ngIf="p.get('editando')?.value" formControlName="diploma" />
+          </td>
+          <td>
+            <span *ngIf="!p.get('editando')?.value">{{ p.get('anio')?.value || '—' }}</span>
+            <input *ngIf="p.get('editando')?.value" type="number" formControlName="anio" />
+          </td>
+          <td class="acciones">
+            <button *ngIf="!p.get('editando')?.value" class="btn-edit" (click)="editarFila('primaria', i)">✏️</button>
+            <button *ngIf="p.get('editando')?.value" class="btn-save" (click)="guardarFila('primaria', i)">💾</button>
+            <button class="btn-delete" (click)="eliminarPrimaria(i)">🗑</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<!-- ========== Tecnico / Diplomado ========== -->
+  <h4 class="section-title">Técnico, Diplomados</h4>
+  <div class="tabla-wrapper">
+    <div class="tabla-header">
+      <button type="button" class="btn-add" (click)="agregarTecnico()">+ Agregar Curso</button>
+    </div>
+
+    <table class="table" formArrayName="tecnico">
+      <thead>
+        <tr>
+          <th>Institución</th>
+          <th>Diploma, Ténico</th>
+          <th>Duracion</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of tecnico.controls; let i = index" [formGroupName]="i">
+          <td>
+            <span *ngIf="!t.get('editando')?.value">{{ t.get('institucion')?.value || '—' }}</span>
+            <input *ngIf="t.get('editando')?.value" formControlName="institucion" />
+          </td>
+          <td>
+            <span *ngIf="!t.get('editando')?.value">{{ t.get('diploma')?.value || '—' }}</span>
+            <input *ngIf="t.get('editando')?.value" formControlName="diploma" />
+          </td>
+          <td>
+            <span *ngIf="!t.get('editando')?.value">{{ t.get('anio')?.value || '—' }}</span>
+            <input *ngIf="t.get('editando')?.value" type="number" formControlName="anio" />
+          </td>
+          <td class="acciones">
+            <button *ngIf="!t.get('editando')?.value" class="btn-edit" (click)="editarFila('tecnico', i)">✏️</button>
+            <button *ngIf="t.get('editando')?.value" class="btn-save" (click)="guardarFila('tecnico', i)">💾</button>
+            <button class="btn-delete" (click)="eliminarTecnico(i)">🗑</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h3 style="margin-bottom: .75rem;" class="section-title">Conocimientos Generales</h3>
+
+<div [formGroup]="form" class="conocimientos-form" formGroupName="conocimientosGenerales" >
+  <div class="form-grid">
+
+    <div class="form-field">
+      <label >¿Estudia actualmente?</label>
+      <select formControlName="estudiaActualmente">
+        <option value="">Seleccione</option>
+        <option value="Si">Sí</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <label>Días y horario de asistencia</label>
+      <input type="text" formControlName="horarioAsistencia" placeholder="Ej. Lunes a Viernes de 7am a 12pm">
+    </div>
+
+    <div class="form-field full">
+      <label>Habilidades</label>
+      <textarea rows="2" formControlName="habilidades" placeholder="Ej. Numérica, liderazgo, logística"></textarea>
+    </div>
+
+    <div class="form-field full">
+      <label>Trabajo en el que se ha especializado</label>
+      <input type="text" formControlName="especializacion" placeholder="Ej. Logística y compras">
+    </div>
+
+    <div class="form-field">
+      <label>Idioma que domina</label>
+      <input type="text" formControlName="idioma" placeholder="Ej. Español, inglés 60%">
+    </div>
+
+    <div class="form-field">
+      <label>Vehículos que sabe conducir</label>
+      <input type="text" formControlName="vehiculos" placeholder="Ej. Automóvil, camión, montacargas">
+    </div>
+
+    <div class="form-field">
+      <label>Maquinaria o equipo que sabe utilizar</label>
+      <input type="text" formControlName="maquinaria" placeholder="Ej. Computadora, scanner, impresora">
+    </div>
+
+    <div class="form-field">
+      <label>¿Desea continuar con sus estudios o carrera?</label>
+      <select formControlName="deseaContinuar">
+        <option value="">Seleccione</option>
+        <option value="Si">Sí</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+
+    <div class="form-field full">
+      <label>¿Por qué desea continuar?</label>
+      <textarea rows="2" formControlName="motivoContinuar" placeholder="Ej. Superación personal y profesional"></textarea>
+    </div>
+
+  </div>
+</div>
+
+</div>

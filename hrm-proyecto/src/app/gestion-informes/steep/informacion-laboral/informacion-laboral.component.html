@@ -1,0 +1,112 @@
+<form [formGroup]="form" class="form-step">
+  <!-- Información general -->
+  <div class="section-card">
+    <div class="section-header">Datos generales</div>
+    <div class="section-body">
+      <div class="form-grid">
+        <div class="form-item">
+          <label>¿Se encuentra laborando actualmente?</label>
+          <select formControlName="seEncuentraLaborando" class="form-select">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+
+        <div class="form-item">
+          <label>¿Cómo se ha sostenido económicamente?</label>
+          <input formControlName="sostenEconomico" class="form-control" placeholder="Ej. Agricultura, Negocio propio" />
+        </div>
+
+        <div class="form-item">
+          <label>Ingreso aproximado</label>
+          <input formControlName="ingresoAproximado" type="number" class="form-control" placeholder="Q. 0.00" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empresas -->
+  <div class="section-card" formArrayName="empresas">
+    <div class="section-header d-flex justify-content-between align-items-center">
+      <span>Empresas</span>
+    </div>
+
+    <div class="section-body" *ngFor="let emp of empresas.controls; let i = index" [formGroupName]="i">
+      <div class="subsection-title">Empresa {{ i + 1 }}</div>
+      <div class="form-grid">
+        <div class="form-item"><label>Nombre de la empresa</label><input formControlName="nombreEmpresa"
+            class="form-control" /></div>
+        <div class="form-item"><label>Dirección</label><input formControlName="direccion" class="form-control" />
+        </div>
+        <div class="form-item"><label>Teléfono</label><input formControlName="telefono" class="form-control" /></div>
+        <div class="form-item"><label>Último cargo</label><input formControlName="ultimoCargo" class="form-control" />
+        </div>
+        <div class="form-item"><label>Constancia laboral</label>
+          <select formControlName="constanciaLaboral" class="form-select">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+        <div class="form-item"><label>Jefe inmediato</label><input formControlName="jefeInmediato"
+            class="form-control" /></div>
+        <div class="form-item"><label>Teléfono del jefe</label><input formControlName="telefonoJefe"
+            class="form-control" /></div>
+        <div class="form-item"><label>Fecha inicio</label><input type="date" formControlName="fechaInicio"
+            class="form-control" /></div>
+        <div class="form-item"><label>Fecha final</label><input type="date" formControlName="fechaFinal"
+            class="form-control" /></div>
+        <div class="form-item"><label>Salario final</label><input type="number" formControlName="salarioFinal"
+            class="form-control" /></div>
+        <div class="form-item"><label>Motivo de separación</label><input formControlName="motivoSeparacion"
+            class="form-control" /></div>
+      </div>
+
+      <h1>Referencia Laboral</h1>
+      <div formGroupName="referencia" class="form-grid">
+        <div class="form-item"><label>Informante</label><input formControlName="informante" class="form-control" />
+        </div>
+        <div class="form-item"><label>Cargo del informante</label><input formControlName="cargoInformante"
+            class="form-control" /></div>
+        <div class="form-item"><label>Teléfono</label><input formControlName="telefonoInformante"
+            class="form-control" /></div>
+        <div class="form-item"><label>Correo electrónico</label><input formControlName="correoInformante"
+            class="form-control" /></div>
+        <div class="form-item"><label>Indica que el candidato</label><input formControlName="indicaCandidato"
+            class="form-control" /></div>
+        <div class="form-item"><label>Empresa</label><input formControlName="empresa" class="form-control" /></div>
+        <div class="form-item"><label>Período laboral</label><input formControlName="periodoLaboral"
+            class="form-control" /></div>
+        <div class="form-item"><label>Último cargo</label><input formControlName="ultimoCargo" class="form-control" />
+        </div>
+        <div class="form-item"><label>Motivo separación</label><input formControlName="motivoSeparacion"
+            class="form-control" /></div>
+        <div class="form-item"><label>Posee llamada de atención</label>
+          <select formControlName="llamadaAtencion" class="form-select">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+        <div class="form-item"><label>Acepta recontratación</label>
+          <select formControlName="aceptaRecontratacion" class="form-select">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+        <div class="form-item w-100"><label>Comentario adicional</label><textarea formControlName="comentario"
+            class="form-control"></textarea></div>
+      </div>
+
+      <div class="text-end">
+        <button type="button" (click)="eliminarEmpresa(i)" class="btn-delete">Eliminar Empresa</button>
+      </div>
+    </div>
+    <div class="section-header d-flex justify-content-between align-items-center">
+      <button type="button" (click)="agregarEmpresa()" class="btn-add">+ Agregar Empresa</button>
+    </div>
+  </div>
+  <div><label>Comentario </label><textarea formControlName="comentarioGeneral" class="form-control"></textarea></div>
+</form>

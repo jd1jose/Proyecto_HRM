@@ -1,0 +1,802 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🎨 Paleta global HRM Consulting */
+:root {
+  --color-verde: #6DBE45;
+  --color-naranja: #F47721;
+  --color-gris: #333333;
+  --color-blanco: #FFFFFF;
+  --color-fondo: #F9FAFB;
+  --color-borde: #E5E7EB;
+}
+
+/* 🧭 Reset global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-gris);
+  min-height: 100vh;
+}
+
+/* ============================= */
+/* 🧱 Estructura general */
+/* ============================= */
+
+header {
+  height: 60px;
+  background-color: var(--color-blanco);
+  border-bottom: 1px solid var(--color-borde);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+  z-index: 10;
+}
+
+header h1 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-verde);
+}
+
+.sidebar {
+  width: 240px;
+  background-color: var(--color-gris);
+  color: var(--color-blanco);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  min-height: 100vh;
+}
+
+.sidebar h2 {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  opacity: 0.8;
+}
+
+.sidebar a {
+  color: var(--color-blanco);
+  text-decoration: none;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.375rem;
+  margin-bottom: 0.4rem;
+  transition: all 0.3s ease;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background-color: var(--color-naranja);
+  color: var(--color-blanco);
+}
+
+/* ============================= */
+/* 🔘 Botones */
+/* ============================= */
+
+button {
+  cursor: pointer;
+  font-weight: 500;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--color-verde);
+  color: var(--color-blanco);
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+}
+
+.btn-primary:hover {
+  background-color: #5aae38;
+}
+
+.btn-secondary {
+  background-color: var(--color-naranja);
+  color: var(--color-blanco);
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+}
+
+.btn-secondary:hover {
+  background-color: #e16b1f;
+}
+
+.btn-danger {
+  background-color: #e53e3e;
+  color: var(--color-blanco);
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+}
+
+.btn-danger:hover {
+  background-color: #c53030;
+}
+
+/* ============================= */
+/* 🧾 Formularios */
+/* ============================= */
+
+form {
+  background-color: var(--color-blanco);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  color: var(--color-gris);
+  margin-bottom: 0.25rem;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid var(--color-borde);
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--color-verde);
+  box-shadow: 0 0 0 2px rgba(109, 190, 69, 0.3);
+  outline: none;
+}
+
+/* ============================= */
+/* 🧩 Tarjetas (Cards) */
+/* ============================= */
+
+.card {
+  background-color: var(--color-blanco);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+/* ============================= */
+/* 📋 Tablas */
+/* ============================= */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: var(--color-blanco);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.table th {
+  background-color: var(--color-verde);
+  color: var(--color-blanco);
+  text-align: left;
+  padding: 0.75rem 1rem;
+}
+
+.table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.table tr:hover {
+  background-color: #f9fafb;
+}
+
+/* ============================= */
+/* 🧩 Angular Material Stepper */
+/* ============================= */
+
+/* Fondo y texto */
+/* === Texto del label === */
+.mat-step-label {
+  font-weight: 600;
+  color: var(--color-gris) !important;
+}
+
+/* === Icono (círculo con número o lápiz) === */
+.mat-step-icon {
+  background-color: var(--color-verde) !important; /* Verde por defecto */
+  color: var(--color-blanco) !important;
+  font-weight: 600;
+}
+
+/* === Paso activo === */
+.mat-step-header.mat-active .mat-step-icon {
+  background-color: var(--color-naranja) !important; /* Naranja activo */
+  color: var(--color-blanco) !important;
+}
+
+/* === Paso completado === */
+.mat-step-header.mat-completed .mat-step-icon {
+  background-color: var(--color-naranja) !important; /* Naranja completado */
+  color: var(--color-blanco) !important;
+}
+
+/* === Línea conectora entre pasos === */
+.mat-stepper-horizontal-line {
+  border-top-color: var(--color-borde) !important;
+}
+
+/* === Fondo transparente y spacing === */
+.mat-stepper-horizontal {
+  background-color: transparent !important;
+  padding: 1rem 0;
+}
+
+/* === Cabecera === */
+.mat-horizontal-stepper-header {
+  padding: 10px 12px !important;
+  transition: all 0.2s ease-in-out;
+}
+.mat-horizontal-stepper-header:hover {
+  transform: scale(1.03);
+}
+
+/* === Contenedor de contenido === */
+.mat-horizontal-content-container {
+  margin-top: 1.5rem !important;
+}
+
+/* === Línea entre pasos === */
+.mat-stepper-horizontal-line {
+  border-top: 2px solid var(--color-borde) !important;
+}
+
+/* === Quitar sombras === */
+.mat-step-header,
+.mat-stepper-horizontal-line {
+  box-shadow: none !important;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .mat-horizontal-stepper-header-container {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  .mat-step-label {
+    font-size: 0.85rem !important;
+  }
+  .mat-step-icon {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 0.85rem !important;
+  }
+}
+/* ====== Acciones del paso ====== */
+.step-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+/* Botón primario (Siguiente / Guardar) */
+.mat-mdc-raised-button.mat-primary,
+.mat-mdc-flat-button.mat-primary {
+  background-color: var(--color-naranja) !important; /* 🔸 Ahora naranja */
+  color: #fff !important;
+  box-shadow: none !important;
+}
+.mat-mdc-raised-button.mat-primary:hover,
+.mat-mdc-flat-button.mat-primary:hover {
+  background-color: #e16b1f !important;
+}
+
+/* Botón secundario (Anterior) */
+.mat-mdc-stroked-button.mat-accent,
+.mat-mdc-outlined-button.mat-accent {
+  --mdc-outlined-button-outline-color: var(--color-naranja);
+  border-color: var(--color-naranja) !important;
+  color: var(--color-naranja) !important;
+  background: transparent !important;
+}
+.mat-mdc-stroked-button.mat-accent:hover,
+.mat-mdc-outlined-button.mat-accent:hover {
+  background: rgba(244, 119, 33, 0.08) !important;
+}
+/* ============================= */
+/* 🧩 Layouts auxiliares */
+/* ============================= */
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.rounded {
+  border-radius: 0.375rem;
+}
+
+.form-grid {
+  display: grid;
+  flex-direction: column;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.form-grid div {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-title {
+  grid-column: 1 / -1;
+  margin-top: 1rem;
+  color: var(--color-verde);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+textarea {
+  width: 100%;
+  min-height: 80px;
+  border: 1px solid var(--color-borde);
+  border-radius: 6px;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  resize: vertical;
+}
+
+/* ============================= */
+/* Responsive */
+/* ============================= */
+
+@media (max-width: 768px) {
+  .mat-horizontal-stepper-header-container {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  .mat-step-label {
+    font-size: 0.85rem !important;
+  }
+  .mat-step-icon {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 0.85rem !important;
+  }
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+/* ====== Acciones del paso ====== */
+.step-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+/* Redondear todos los botones Material */
+.mdc-button,
+.mat-mdc-raised-button,
+.mat-mdc-stroked-button,
+.mat-mdc-outlined-button,
+.mat-mdc-unelevated-button,
+.mat-mdc-button-base {
+  border-radius: 9999px !important; /* estilo pill */
+  text-transform: none !important;
+  font-weight: 600 !important;
+}
+
+/* Primarios (Siguiente / Guardar) */
+.mat-mdc-raised-button.mat-primary,
+.mat-mdc-flat-button.mat-primary {
+  background-color: var(--color-verde) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+.mat-mdc-raised-button.mat-primary:hover,
+.mat-mdc-flat-button.mat-primary:hover {
+  background-color: #5aae38 !important;
+}
+
+/* Secundario / Anterior (contorno naranja) */
+.mat-mdc-stroked-button.mat-accent,
+.mat-mdc-outlined-button.mat-accent {
+  --mdc-outlined-button-outline-color: var(--color-naranja);
+  border-color: var(--color-naranja) !important;
+  color: var(--color-naranja) !important;
+  background: transparent !important;
+}
+.mat-mdc-stroked-button.mat-accent:hover,
+.mat-mdc-outlined-button.mat-accent:hover {
+  background: rgba(244, 119, 33, 0.08) !important;
+}
+
+/* Estado disabled coherente */
+.mat-mdc-button-disabled,
+.mat-mdc-button-disabled .mdc-button__label {
+  opacity: 0.5 !important;
+}
+
+/* Evitar herencias raras de tema oscuro */
+.mat-mdc-button,
+.mat-mdc-raised-button,
+.mat-mdc-stroked-button,
+.mat-mdc-outlined-button,
+.mat-mdc-unelevated-button {
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+/* ✅ Contenedor general para el botón agregar */
+.add-button-container {
+  grid-column: 1 / -1;
+  text-align: left;
+  margin: 0.5rem 0 1.5rem;
+}
+
+/* ✅ Botón “+ Agregar ...” */
+.btn-add {
+  background-color: var(--color-verde);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-add:hover {
+  background-color: #5aae38;
+}
+
+/* ✅ Ajuste de grillas */
+.hermanos-grid,
+.hijos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+/* ✅ Contenedor del botón eliminar */
+.btn-right {
+  grid-column: 1 / -1;
+  text-align: right;
+  margin-top: 0.5rem;
+}
+
+/* ✅ Separación entre secciones */
+.section-title {
+  grid-column: 1 / -1;
+  margin: 1.5rem 0 0.75rem;
+  color: var(--color-verde);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+/* Contenedor de la lista */
+.list-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Tarjeta del item */
+.item-card {
+  background: #ffffff;
+  border: 1px solid var(--color-borde);
+  padding: 1rem 1.25rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  background-color: var(--color-blanco);
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  margin-bottom: 1.25rem;
+
+}
+
+/* Cabecera del card */
+.item-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  margin-bottom: .75rem;
+  border-bottom: 1px dashed #eaeaea;
+  padding-bottom: .5rem;
+}
+
+.item-card {
+  font-weight: 700;
+  color: var(--color-verde);
+}
+
+/* Botón eliminar discreto */
+.btn-delete {
+   background-color: var(--color-naranja);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.btn-delete:hover {
+  background-color: var(--color-naranja);
+}
+
+/* Grid de campos de la tarjeta */
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 0.9rem 1rem;   /* fila/columna */
+}
+
+/* Responsive del grid */
+@media (max-width: 1100px) {
+  .item-grid {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  .item-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Inputs/Selects uniformes en tarjetas */
+.item-card input,
+.item-card select {
+  width: 100%;
+  height: 38px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.item-card input:focus,
+.item-card select:focus {
+  border-color: var(--color-verde);
+  outline: none;
+  box-shadow: 0 0 3px rgba(109, 190, 69, .3);
+}
+
+/* Botón agregar al final de la lista */
+.add-button-container {
+  text-align: left;
+  margin-top: .25rem;
+}
+
+/* Mantén tu estilo del botón agregar que ya quedó bien */
+.btn-add { /* ya lo tienes, dejo por si falta */
+  background-color: var(--color-verde);
+  color: #fff;
+  border: none;
+  padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-add:hover { background-color: #5aae38; }
+.hermano-card, .hijo-card {
+ background-color: var(--color-blanco);
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.25rem;
+}
+
+/* === Grid 2 columnas === */
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem 1.25rem;
+  align-items: start;
+}
+
+/* === Inputs/Selects uniformes === */
+.hermano-card input,
+.hermano-card select,
+.hijo-card input,
+.hijo-card select {
+  width: 100%;
+  border: 1px solid var(--color-borde);
+  border-radius: 6px;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.hermano-card input:focus,
+.hermano-card select:focus,
+.hijo-card input:focus,
+.hijo-card select:focus {
+  border-color: var(--color-verde);
+  box-shadow: 0 0 2px rgba(109, 190, 69, 0.3);
+  outline: none;
+}
+
+/* === Títulos === */
+.section-title {
+  color: var(--color-verde);
+  font-weight: 700;
+  margin: 1.5rem 0 1rem;
+}
+
+/* === Botón eliminar === */
+.btn-delete {
+   background-color: var(--color-naranja);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.btn-delete:hover {
+  background-color: var(--color-naranja);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+.seccion-card {
+  border: 1px solid var(--color-borde);
+  border-radius: 12px;
+  background-color: var(--color-blanco);
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.upload-container {
+  margin-bottom: 1rem;
+}
+.btn-agregar {
+  background-color: var(--color-verde);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-agregar:hover {
+  background-color: #5ba63b;
+}
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.preview-card {
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  background-color: #fafafa;
+  padding: 0.5rem;
+  position: relative;
+}
+
+.preview-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.preview-card p {
+  font-size: 0.85rem;
+  color: var(--color-gris);
+  margin-top: 0.25rem;
+  word-break: break-word;
+}
+
+.btn-eliminar {
+  background-color: var(--color-naranja);
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+}
+
+.btn-eliminar:hover {
+  background-color: #e66516;
+}
+.btn-anterior {
+  background: none;
+  border: none;
+  color: #e66516;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-anterior:hover {
+  text-decoration: underline;
+}
+::ng-deep .mat-horizontal-stepper-header {
+  background-color: transparent !important;
+}
+
+::ng-deep .mat-step-icon {
+  background-color: var(--color-verde) !important;
+  color: #fff !important;
+}
+
+::ng-deep .mat-step-icon-selected {
+  background-color: var(--color-naranja) !important;
+}
+
+::ng-deep .mat-horizontal-content-container {
+  padding: 1.5rem 0 !important;
+}
+
+.mat-step-label {
+  font-weight: 500;
+  color: var(--color-gris);
+}
+nav button {
+  font-weight: 500;
+  transition: background 0.3s, transform 0.1s;
+}
+
+nav button:hover {
+  transform: translateX(3px);
+}
+
+nav {
+  background: linear-gradient(to bottom, #ffffff, #f9fafb);
+}

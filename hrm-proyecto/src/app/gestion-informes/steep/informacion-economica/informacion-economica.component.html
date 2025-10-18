@@ -1,0 +1,551 @@
+
+
+<div [formGroup]="form" class="econ-form">
+  <!-- Información General -->
+  <div class="bloque">
+    <h4>Información General</h4>
+    <div class="form-grid">
+      <div class="form-field"><label>Ingresos actuales (Q)</label><input type="number"
+          formControlName="ingresosActuales"></div>
+      <div class="form-field"><label>Salario de la pareja (Q)</label><input type="number"
+          formControlName="salarioPareja"></div>
+      <div class="form-field"><label>¿Recibe remesas?</label>
+        <select formControlName="recibeRemesa">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="form-field"><label>Ingreso aproximado (Q)</label><input type="number" formControlName="ingresoAprox">
+      </div>
+      <div class="form-field"><label>¿Otros ingresos?</label>
+        <select formControlName="otrosIngresos">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="form-field"><label>Origen del ingreso</label><input formControlName="origenIngreso"></div>
+      <div class="form-field full"><label>Ingreso adicional (Q)</label><input type="number"
+          formControlName="ingresoAdicional"></div>
+    </div>
+  </div>
+
+  <!-- Aportantes -->
+  <div class="bloque">
+    <h4 class="section-title">Aportantes Familiares</h4>
+
+    <div formArrayName="aportantes">
+      <div *ngFor="let ap of aportantes.controls; let i = index" [formGroupName]="i" class="card">
+        <div class="card-header">
+          <h5>{{ ap.get('nombre')?.value || ('Aportante ' + (i+1)) }}</h5>
+        </div>
+        <div class="card-body">
+          <div class="form-grid">
+            <div class="form-field"><label>Nombre</label><input formControlName="nombre"></div>
+            <div class="form-field"><label>Parentesco</label><input formControlName="parentesco"></div>
+            <div class="form-field"><label>Puesto laboral</label><input formControlName="puesto"></div>
+            <div class="form-field"><label>Ingreso (Q)</label><input type="number" formControlName="ingreso"></div>
+          </div>
+          <button class="btn-delete" type="button" (click)="eliminarAportante(i)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn-add" (click)="agregarAportante()">+ Agregar aportante</button>
+  </div>
+  <div class="bloque">
+    <h4 class="section-title">Información Financiera Detallada</h4>
+
+    <div class="form-grid">
+      <div class="form-field">
+        <label>¿Se encuentra laborando actualmente?</label>
+        <select formControlName="laborandoActualmente">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label>Empresa</label>
+        <input formControlName="empresa" placeholder="Ej. LITObox">
+      </div>
+
+      <div class="form-field">
+        <label>Último salario devengado (Q)</label>
+        <input type="number" formControlName="ultimoSalario">
+      </div>
+
+      <div class="form-field">
+        <label>¿Posee créditos o préstamos?</label>
+        <select formControlName="poseeCreditos">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label>¿Cuántos?</label>
+        <input type="number" formControlName="cuantosCreditos">
+      </div>
+
+      <div class="form-field">
+        <label>¿Posee tarjetas de crédito?</label>
+        <select formControlName="poseeTarjetas">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label>¿Cuántas?</label>
+        <input type="number" formControlName="cuantasTarjetas">
+      </div>
+
+      <div class="form-field">
+        <label>¿Presenta atraso en pago de cuotas, deudas o convenios?</label>
+        <select formControlName="atrasoCuotas">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label>¿Presenta atraso en pago de tarjetas de crédito?</label>
+        <select formControlName="atrasoTarjetas">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label>¿Presenta algún tipo de demanda financiera?</label>
+        <select formControlName="demandaFinanciera">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label>¿Posee embargos bancarios o salariales activos?</label>
+        <select formControlName="embargosActivos">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label>Promedio de gastos mensuales (Q)</label>
+        <input type="number" formControlName="promedioGastos">
+      </div>
+
+      <div class="form-field">
+        <label>Salario ofrecido por la empresa (Q)</label>
+        <input type="number" formControlName="salarioOfrecido">
+      </div>
+
+      <div class="form-field">
+        <label>Ingreso aproximado del núcleo familiar (Q)</label>
+        <input type="number" formControlName="ingresoFamiliar">
+      </div>
+
+      <div class="form-field">
+        <label>¿Posee cuentas monetarias?</label>
+        <input formControlName="cuentasMonetarias" placeholder="Ej. BI, Banrural, etc.">
+      </div>
+
+      <div class="form-field">
+        <label>¿Posee cuentas de ahorro?</label>
+        <select formControlName="cuentasAhorro">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <!-- INGRESOS DECLARADOS -->
+  <div class="bloque">
+    <h4 class="section-title">Ingresos Declarados</h4>
+
+    <div class="form-grid">
+      <div class="form-field">
+        <label>¿Se encuentra laborando actualmente?</label>
+        <select formControlName="laboraActualmente">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label>Último salario devengado (Q)</label>
+        <input type="number" formControlName="ultimoSalarioDevengado">
+      </div>
+
+      <div class="form-field">
+        <label>Ingreso actual (Q)</label>
+        <input type="number" formControlName="ingresoActual">
+      </div>
+
+      <div class="form-field">
+        <label>Salario de la pareja (Q)</label>
+        <input type="number" formControlName="salarioPareja">
+      </div>
+
+      <div class="form-field">
+        <label>Valor de los ingresos adicionales (Q)</label>
+        <input type="number" formControlName="ingresosAdicionales">
+      </div>
+
+      <div class="form-field full">
+        <label><strong>Ingreso total del núcleo familiar (Q)</strong></label>
+        <input type="number" formControlName="ingresoTotalFamiliar" readonly>
+      </div>
+    </div>
+  </div>
+
+  <!-- EGRESOS DECLARADOS -->
+  <div class="bloque">
+    <h4 class="section-title">Egresos Declarados</h4>
+
+    <div class="form-grid">
+      <!-- Columna 1 -->
+      <div class="form-field"><label>Hipoteca</label><input type="number" formControlName="hipoteca"></div>
+      <div class="form-field"><label>Alquiler</label><input type="number" formControlName="alquiler"></div>
+      <div class="form-field"><label>Mantenimiento</label><input type="number" formControlName="mantenimiento"></div>
+      <div class="form-field"><label>Pago de seguridad</label><input type="number" formControlName="seguridad"></div>
+      <div class="form-field"><label>Servicio de agua</label><input type="number" formControlName="agua"></div>
+      <div class="form-field"><label>Servicio de luz</label><input type="number" formControlName="luz"></div>
+      <div class="form-field"><label>Gas propano</label><input type="number" formControlName="gas"></div>
+      <div class="form-field"><label>Servicio de Internet</label><input type="number" formControlName="internet"></div>
+      <div class="form-field"><label>Servicio telefónico fijo</label><input type="number"
+          formControlName="telefonoFijo"></div>
+      <div class="form-field"><label>Televisión por cable</label><input type="number" formControlName="cable"></div>
+      <div class="form-field"><label>Alimentación</label><input type="number" formControlName="alimentacion"></div>
+      <div class="form-field"><label>Servicios domésticos</label><input type="number"
+          formControlName="serviciosDomesticos"></div>
+      <div class="form-field"><label>Extracción de desechos</label><input type="number"
+          formControlName="extraccionDesechos"></div>
+      <div class="form-field"><label>Recreación</label><input type="number" formControlName="recreacion"></div>
+      <div class="form-field"><label>Vestuario</label><input type="number" formControlName="vestuario"></div>
+
+      <!-- Columna 2 -->
+      <div class="form-field"><label>Medicamentos o tratamientos</label><input type="number"
+          formControlName="medicamentos"></div>
+      <div class="form-field"><label>Estudios propios</label><input type="number" formControlName="estudiosPropios">
+      </div>
+      <div class="form-field"><label>Estudios a terceros</label><input type="number" formControlName="estudiosTerceros">
+      </div>
+      <div class="form-field"><label>Hábito de ahorros</label><input type="number" formControlName="ahorro"></div>
+      <div class="form-field"><label>Pago de tarjeta de crédito</label><input type="number"
+          formControlName="pagoTarjeta"></div>
+      <div class="form-field"><label>Pago de préstamo o crédito</label><input type="number"
+          formControlName="pagoPrestamo"></div>
+      <div class="form-field"><label>Pago de créditos de consumo</label><input type="number"
+          formControlName="pagoConsumo"></div>
+      <div class="form-field"><label>Pago de visa cuota</label><input type="number" formControlName="pagoVisa"></div>
+      <div class="form-field"><label>Pago de extra financiamiento</label><input type="number"
+          formControlName="pagoExtra"></div>
+      <div class="form-field"><label>Pago de adquisición de bienes</label><input type="number"
+          formControlName="adquisicionBienes"></div>
+      <div class="form-field"><label>Transporte público</label><input type="number" formControlName="transporte"></div>
+      <div class="form-field"><label>Gasto de combustible</label><input type="number" formControlName="combustible">
+      </div>
+      <div class="form-field"><label>Pensión alimenticia</label><input type="number" formControlName="pension"></div>
+      <div class="form-field"><label>Otros gastos permanentes</label><input type="number" formControlName="otrosGastos">
+      </div>
+    </div>
+
+    <div class="form-field full total-egresos">
+      <label><strong>Total de egresos (Q)</strong></label>
+      <input type="number" formControlName="totalEgresos" readonly>
+    </div>
+  </div>
+
+  <!-- Tarjetas -->
+  <div class="bloque">
+    <h4 class="section-title">Tarjetas de Crédito</h4>
+
+    <div formArrayName="tarjetas">
+      <div *ngFor="let t of tarjetas.controls; let i = index" [formGroupName]="i" class="card">
+        <div class="card-header">
+          <h5>{{ t.get('institucion')?.value || ('Tarjeta ' + (i+1)) }}</h5>
+        </div>
+        <div class="card-body">
+          <div class="form-grid">
+            <div class="form-field"><label>Institución bancaria</label><input formControlName="institucion"></div>
+            <div class="form-field"><label>Crédito autorizado</label><input type="number" formControlName="credito">
+            </div>
+            <div class="form-field"><label>Deuda actual</label><input type="number" formControlName="deuda"></div>
+            <div class="form-field"><label>Pago mensual</label><input type="number" formControlName="pagoMensual"></div>
+            <div class="form-field"><label>Estatus</label><input formControlName="estatus"></div>
+          </div>
+          <button class="btn-delete" type="button" (click)="eliminarTarjeta(i)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+    <button class="btn-add" type="button" (click)="agregarTarjeta()">+ Agregar tarjeta</button>
+  </div>
+
+  <!-- Visa / Extra -->
+  <div class="bloque">
+    <h4 class="section-title">Visa Cuotas / Extra Financiamientos</h4>
+
+    <div formArrayName="visas">
+      <div *ngFor="let v of visas.controls; let i = index" [formGroupName]="i" class="card">
+        <div class="card-header">
+          <h5>{{ v.get('institucion')?.value || ('Visa / Extra ' + (i+1)) }}</h5>
+        </div>
+        <div class="card-body">
+          <div class="form-grid">
+            <div class="form-field"><label>Institución</label><input formControlName="institucion"></div>
+            <div class="form-field"><label>Valor total</label><input type="number" formControlName="valorTotal"></div>
+            <div class="form-field"><label>Deuda</label><input type="number" formControlName="valorDeuda"></div>
+            <div class="form-field"><label>Valor cuotas</label><input type="number" formControlName="valorCuotas"></div>
+          </div>
+          <button class="btn-delete" type="button" (click)="eliminarVisa(i)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+    <button class="btn-add" type="button" (click)="agregarVisa()">+ Agregar Visa / Extra</button>
+  </div>
+
+  <!-- Préstamos -->
+  <div class="bloque">
+    <h4 class="section-title">Préstamos</h4>
+
+    <div formArrayName="prestamos">
+      <div *ngFor="let p of prestamos.controls; let i = index" [formGroupName]="i" class="card">
+        <div class="card-header">
+          <h5>{{ p.get('institucion')?.value || ('Préstamo ' + (i+1)) }}</h5>
+        </div>
+        <div class="card-body">
+          <div class="form-grid">
+            <div class="form-field"><label>Institución financiera</label><input formControlName="institucion"></div>
+            <div class="form-field"><label>Crédito autorizado</label><input type="number" formControlName="credito">
+            </div>
+            <div class="form-field"><label>Deuda actual</label><input type="number" formControlName="deuda"></div>
+            <div class="form-field"><label>Pago mensual</label><input type="number" formControlName="pago"></div>
+            <div class="form-field full"><label>Motivo</label><input formControlName="motivo"></div>
+          </div>
+          <button class="btn-delete" type="button" (click)="eliminarPrestamo(i)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+    <button class="btn-add" type="button" (click)="agregarPrestamo()">+ Agregar préstamo</button>
+  </div>
+
+  <div class="bloque">
+    <h4 class="section-title">Propiedades (Bienes Inmuebles y Automóviles)</h4>
+
+    <!-- Propiedades generales -->
+    <div class="form-grid">
+      <div class="form-field">
+        <label>Propiedades a su nombre</label>
+        <select formControlName="propiedadNombrePropia">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Propiedades a nombre de sus padres</label>
+        <select formControlName="propiedadNombrePadres">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Propiedades a nombre de su pareja</label>
+        <select formControlName="propiedadNombrePareja">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Propiedades a nombre de ambos</label>
+        <select formControlName="propiedadNombreAmbos">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- BIENES INMUEBLES -->
+    <h4 class="section-title">Bienes Inmuebles</h4>
+
+
+    <div formArrayName="bienesInmuebles">
+      <div *ngFor="let b of bienesInmuebles.controls; let i = index" [formGroupName]="i" class="card">
+        <div class="form-grid">
+          <div class="form-field"><label>Tipo de propiedad</label><input formControlName="tipoPropiedad"></div>
+          <div class="form-field full"><label>Ubicación</label><input formControlName="ubicacion"></div>
+          <div class="form-field"><label>Propietario</label><input formControlName="propietario"></div>
+          <div class="form-field"><label>Valor aproximado (Q)</label><input type="number"
+              formControlName="valorAproximado"></div>
+        </div>
+        <button type="button" class="btn-delete" (click)="eliminarInmueble(i)">Eliminar</button>
+      </div>
+
+    </div>
+    <button class="btn-add" type="button" (click)="agregarInmueble()">+ Agregar inmueble</button>
+    <!-- VEHÍCULOS -->
+    <h4 class="section-title">Vehículos</h4>
+
+    <div formArrayName="vehiculos">
+      <div *ngFor="let v of vehiculos.controls; let i = index" [formGroupName]="i" class="card">
+        <div class="form-grid">
+          <div class="form-field"><label>Marca</label><input formControlName="marca"></div>
+          <div class="form-field"><label>Línea</label><input formControlName="linea"></div>
+          <div class="form-field"><label>Modelo</label><input formControlName="modelo"></div>
+          <div class="form-field"><label>Color</label><input formControlName="color"></div>
+          <div class="form-field"><label>Nombre del propietario</label><input formControlName="propietario"></div>
+          <div class="form-field">
+            <label>¿Está asegurado?</label>
+            <select formControlName="asegurado">
+              <option value="">Seleccione</option>
+              <option value="Si">Sí</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+        </div>
+        <button type="button" class="btn-delete" (click)="eliminarVehiculo(i)">Eliminar</button>
+      </div>
+    </div>
+    <button class="btn-add" type="button" (click)="agregarVehiculo()">+ Agregar vehículo</button>
+  </div>
+  <div class="bloque">
+    <h4 class="section-title">Referencias Crediticias y Judiciales</h4>
+    <div class="form-grid">
+      <div class="form-field full">
+        <label>Presenta algún tipo de demanda judicial, civil, financiera o familiar</label>
+        <select formControlName="demandaJudicial">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Presenta algún tipo de registro en sus antecedentes policíacos</label>
+        <select formControlName="antecedentePoliciaco">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Presenta algún tipo de registro en sus antecedentes penales</label>
+        <select formControlName="antecedentePenal">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Ha demandado alguna persona</label>
+        <select formControlName="haDemandadoPersona">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Ha demandado alguna empresa</label>
+        <select formControlName="haDemandadoEmpresa">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Ha recibido alguna denuncia en su contra</label>
+        <select formControlName="haRecibidoDenuncia">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Posee armas de fuego</label>
+        <select formControlName="poseeArmas">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Posee licencia o permiso de portación de armas de fuego</label>
+        <select formControlName="licenciaArmas">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Ha estado detenido en alguna delegación, reclusorio, cárcel o penitenciaría</label>
+        <select formControlName="haEstadoDetenido">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Actualmente posee alguna audiencia, situación o proceso legal</label>
+        <select formControlName="poseeProcesoLegal">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Presenta algún tipo de registro en el sistema de Buró Crediticio / Guate Leyes</label>
+        <select formControlName="registroBuro">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Presenta algún tipo de registro en el sistema de INFOR.NET</label>
+        <select formControlName="registroInfornet">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label>Posee alguna otra deuda, por bienes, electrodomésticos o vehículos</label>
+        <select formControlName="poseeOtraDeuda">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label>¿Es usted fiador de algún familiar o amigo?</label>
+        <select formControlName="esFiador">
+          <option value="">Seleccione</option>
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-field full">
+      <label>Comentarios u observaciones adicionales</label>
+      <textarea rows="3" formControlName="comentariosReferencias"
+        placeholder="Ej. Detalles sobre historial crediticio o judicial..."></textarea>
+    </div>
+  </div>
+</div>

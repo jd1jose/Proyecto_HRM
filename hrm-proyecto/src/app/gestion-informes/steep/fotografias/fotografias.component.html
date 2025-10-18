@@ -1,0 +1,21 @@
+<div [formGroup]="form">
+
+  <div *ngFor="let sec of secciones" class="seccion-card">
+    <h3 class="section-title">{{ sec.titulo }}</h3>
+
+    <div class="upload-container">
+      <label class="btn-agregar">
+        + Agregar Imágenes
+        <input type="file" (change)="onFileSelected($event, sec.key)" multiple accept="image/*" hidden />
+      </label>
+    </div>
+
+    <div formArrayName="{{ sec.key }}" class="preview-grid">
+      <div *ngFor="let foto of getArray(sec.key).controls; let i = index" [formGroupName]="i" class="preview-card">
+        <img [src]="foto.get('archivo')?.value" [alt]="foto.get('nombre')?.value" />
+        <p>{{ foto.get('nombre')?.value }}</p>
+        <button type="button" class="btn-eliminar" (click)="eliminarFoto(sec.key, i)">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+<div [formGroup]="form" class="vivienda-section">
+  <div class="form-grid">
+    <div><label>Tipo de domicilio</label><input formControlName="tipoDomicilio"></div>
+    <div><label>Ubicación</label><input formControlName="ubicacion"></div>
+    <div><label>Cuenta con todos los servicios básicos</label><select formControlName="serviciosBasicos"><option value="Si">Sí</option><option value="No">No</option></select></div>
+    <div><label>La residencia es</label><input formControlName="residencia"></div>
+    <div><label>A nombre de quién está la propiedad</label><input formControlName="propietarioNombre"></div>
+    <div><label>Parentesco</label><input formControlName="parentescoPropietario"></div>
+    <div><label>Clasificación de la población</label><input formControlName="clasificacionPoblacion"></div>
+    <div><label>Color de la fachada</label><input formControlName="colorFachada"></div>
+    <div><label>Color de las puertas</label><input formControlName="colorPuertas"></div>
+    <div><label>Características del domicilio</label><input formControlName="caracteristicasDomicilio"></div>
+    <div><label>No. de habitaciones</label><input formControlName="habitacionesDormir" type="number"></div>
+    <div><label>Cantidad de ambientes</label><input formControlName="ambientesTotales" type="number"></div>
+    <div><label>Estado del domicilio</label><input formControlName="estadoDomicilio"></div>
+    <div><label>Tipo de construcción</label><input formControlName="tipoConstruccion"></div>
+    <div><label>Material del techo</label><input formControlName="materialTecho"></div>
+    <div><label>Material del piso</label><input formControlName="materialPiso"></div>
+    <div><label>Niveles del domicilio</label><input formControlName="nivelesDomicilio"></div>
+    <div><label>Parque del domicilio</label><input formControlName="parqueDomicilio"></div>
+    <div><label>Tamaño de la propiedad (m²)</label><input formControlName="tamanoPropiedad" type="number"></div>
+    <div><label>Tiempo de vivir en la dirección</label><input formControlName="tiempoVivir"></div>
+    <div><label>Cuántos habitan la residencia</label><input formControlName="habitantesTotales" type="number"></div>
+    <div><label>Distancia al trabajo (km)</label><input formControlName="distanciaTrabajo" type="number"></div>
+    <div><label>Tiempo de traslado</label><input formControlName="tiempoTraslado"></div>
+    <div><label>Medio de transporte</label><input formControlName="medioTransporte"></div>
+  </div>
+
+  <hr />
+
+  <h4>Habitantes de la Vivienda</h4>
+  <button type="button" class="btn-add" (click)="agregarHabitante()">+ Agregar habitante</button>
+
+  <div formArrayName="habitantesVivienda">
+    <div *ngFor="let h of habitantesVivienda.controls; let i = index" [formGroupName]="i" class="card">
+      <div class="form-grid">
+        <div><label>Nombre</label><input formControlName="nombre"></div>
+        <div><label>Edad</label><input formControlName="edad" type="number"></div>
+        <div><label>Parentesco</label><input formControlName="parentesco"></div>
+        <div><label>Ocupación</label><input formControlName="ocupacion"></div>
+        <div><label>Lugar de trabajo</label><input formControlName="lugarTrabajo"></div>
+      </div>
+      <button type="button" class="btn-delete" (click)="eliminarHabitante(i)">Eliminar</button>
+    </div>
+  </div>
+
+  <hr />
+
+  <h4 class="section-header">Servicios Públicos y Análisis del Entorno</h4>
+
+<div class="form-grid" [formGroup]="form">
+  <ng-container *ngFor="let campo of camposServiciosEntorno">
+    <div class="form-item">
+      <label>{{ campo.label }}</label>
+
+      <!-- Los que son Sí/No (la mayoría) -->
+      <select *ngIf="campo.key !== 'claseSocialZona' && campo.key !== 'nivelPeligrosidad' && campo.key !== 'referenciasVecinos'"
+              [formControlName]="campo.key">
+        <option value="">Seleccione</option>
+        <option value="Si">Sí</option>
+        <option value="No">No</option>
+      </select>
+
+      <!-- Los que son texto libre -->
+      <input *ngIf="campo.key === 'claseSocialZona' || campo.key === 'nivelPeligrosidad' || campo.key === 'referenciasVecinos'"
+             type="text" [formControlName]="campo.key" />
+    </div>
+  </ng-container>
+</div>
+
+
+</div>

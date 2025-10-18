@@ -1,0 +1,145 @@
+<div [formGroup]="form">
+
+  <!-- === Padre === -->
+  <div class="form-grid">
+    <h4 class="section-title">Padre</h4>
+    <div><label>Nombre del Padre</label><input formControlName="nombrePadre" /></div>
+    <div><label>Edad</label><input formControlName="edadPadre" /></div>
+    <div><label>Fecha de nacimiento</label><input type="date" formControlName="fechaNacimientoPadre" /></div>
+    <div><label>Originario</label><input formControlName="originarioPadre" /></div>
+    <div>
+      <label>Vive su progenitor</label>
+      <select formControlName="vivePadre">
+        <option value="">Seleccione</option>
+        <option [value]="true">Sí</option>
+        <option [value]="false">No</option>
+      </select>
+    </div>
+    <div>
+      <label>Vive con él</label>
+      <select formControlName="viveConPadre">
+        <option value="">Seleccione</option>
+        <option [value]="true">Sí</option>
+        <option [value]="false">No</option>
+      </select>
+    </div>
+    <div><label>Escolaridad</label><input formControlName="escolaridadPadre" /></div>
+    <div><label>Profesión / Ocupación</label><input formControlName="profesionPadre" /></div>
+    <div><label>Residencia</label><input formControlName="residenciaPadre" /></div>
+  </div>
+
+  <!-- === Madre === -->
+  <div class="form-grid">
+    <h4 class="section-title">Madre</h4>
+    <div><label>Nombre de la Madre</label><input formControlName="nombreMadre" /></div>
+    <div><label>Edad</label><input formControlName="edadMadre" /></div>
+    <div><label>Fecha de nacimiento</label><input type="date" formControlName="fechaNacimientoMadre" /></div>
+    <div><label>Originario</label><input formControlName="originarioMadre" /></div>
+    <div>
+      <label>Vive su progenitora</label>
+      <select formControlName="viveMadre">
+        <option value="">Seleccione</option>
+        <option [value]="true">Sí</option>
+        <option [value]="false">No</option>
+      </select>
+    </div>
+    <div>
+      <label>Vive con ella</label>
+      <select formControlName="viveConMadre">
+        <option value="">Seleccione</option>
+        <option [value]="true">Sí</option>
+        <option [value]="false">No</option>
+      </select>
+    </div>
+    <div><label>Escolaridad</label><input formControlName="escolaridadMadre" /></div>
+    <div><label>Profesión / Ocupación</label><input formControlName="profesionMadre" /></div>
+    <div><label>Residencia</label><input formControlName="residenciaMadre" /></div>
+  </div>
+
+  <!-- === Pareja === -->
+  <div class="form-grid">
+    <h4 class="section-title">Pareja</h4>
+    <div><label>Reside en Pareja</label><input formControlName="resideEnPareja" /></div>
+    <div><label>Nombre de la Pareja</label><input formControlName="nombrePareja" /></div>
+    <div><label>Edad</label><input formControlName="edadPareja" /></div>
+    <div><label>Fecha de nacimiento</label><input type="date" formControlName="fechaNacimientoPareja" /></div>
+    <div><label>Originario</label><input formControlName="originarioPareja" /></div>
+    <div>
+      <label>Viven juntos</label>
+      <select formControlName="vivenJuntos">
+        <option value="">Seleccione</option>
+        <option [value]="true">Sí</option>
+        <option [value]="false">No</option>
+      </select>
+    </div>
+    <div><label>Tiempo de relación</label><input formControlName="tiempoRelacion" placeholder="Ej. 3 años" /></div>
+    <div><label>Escolaridad</label><input formControlName="escolaridadPareja" /></div>
+    <div><label>Profesión / Ocupación</label><input formControlName="profesionPareja" /></div>
+    <div><label>Residencia</label><input formControlName="residenciaPareja" /></div>
+  </div>
+
+  <!-- === Hermanos === -->
+  <h4 class="section-title">Hermanos</h4>
+  <div formArrayName="hermanos" class="list-section">
+    <div *ngFor="let h of hermanos.controls; let i = index" [formGroupName]="i" class="hermano-card">
+      <div class="form-grid-2">
+        <div><label>Nombre</label><input formControlName="nombre" /></div>
+        <div><label>Edad</label><input formControlName="edad" /></div>
+        <div><label>Fecha de nacimiento</label><input type="date" formControlName="fechaNacimiento" /></div>
+        <div><label>Originario</label><input formControlName="originario" /></div>
+        <div>
+          <label>Vive con él/ella</label>
+          <select formControlName="viveCon">
+            <option value="">Seleccione</option>
+            <option [value]="true">Sí</option>
+            <option [value]="false">No</option>
+          </select>
+        </div>
+        <div><label>Escolaridad</label><input formControlName="escolaridad" /></div>
+        <div><label>Estado civil</label><input formControlName="estadoCivil" /></div>
+        <div><label>Hijos</label><input formControlName="hijos" /></div>
+        <div><label>Profesión / Ocupación</label><input formControlName="profesion" /></div>
+        <div><label>Residencia</label><input formControlName="residencia" /></div>
+      </div>
+      <div class="btn-right">
+        <button type="button" (click)="eliminarHermano(i)" class="btn-delete">Eliminar</button>
+      </div>
+    </div>
+    <div class="add-button-container">
+      <button type="button" (click)="agregarHermano()" class="btn-add">+ Agregar Hermano</button>
+    </div>
+  </div>
+
+  <!-- === Hijos === -->
+  <h4 class="section-title">Hijos</h4>
+  <div formArrayName="hijos" class="list-section">
+    <div *ngFor="let h of hijos.controls; let i = index" [formGroupName]="i" class="hijo-card">
+      <div class="form-grid-2">
+        <div><label>Nombre</label><input formControlName="nombre" /></div>
+        <div><label>Edad</label><input formControlName="edad" /></div>
+        <div><label>Fecha de nacimiento</label><input type="date" formControlName="fechaNacimiento" /></div>
+        <div><label>Originario</label><input formControlName="originario" /></div>
+        <div>
+          <label>Vive con él/ella</label>
+          <select formControlName="viveCon">
+            <option value="">Seleccione</option>
+            <option [value]="true">Sí</option>
+            <option [value]="false">No</option>
+          </select>
+        </div>
+        <div><label>Residencia</label><input formControlName="resideEn" /></div>
+      </div>
+      <div class="btn-right">
+        <button type="button" (click)="eliminarHijo(i)" class="btn-delete">Eliminar</button>
+      </div>
+    </div>
+    <div class="add-button-container">
+      <button type="button" (click)="agregarHijo()" class="btn-add">+ Agregar Hijo</button>
+    </div>
+  </div>
+
+  <!-- === Comentarios === -->
+  <h4 class="section-title">Observaciones y Comentarios</h4>
+  <div><textarea formControlName="comentarios" class="form-control"></textarea></div>
+  
+</div>

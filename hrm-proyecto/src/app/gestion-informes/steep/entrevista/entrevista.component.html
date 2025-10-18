@@ -1,0 +1,92 @@
+<div [formGroup]="form" class="form-grid">
+
+  <!-- ============================= -->
+  <h3 class="section-title">Aspectos al momento de la entrevista y presentación</h3>
+    <div>
+      <label>¿Se presentó a la hora citada?</label>
+      <select formControlName="presentacionHora">
+        <option value="">Seleccione</option>
+        <option value="Sí">Sí</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+    <div class="full-width">
+      <label>Comentarios</label>
+      <textarea formControlName="comentarioPresentacion" rows="3"></textarea>
+    </div>
+    <div>
+      <label>Código de vestimenta adecuada</label>
+      <select formControlName="vestimentaAdecuada">
+        <option value="">Seleccione</option>
+        <option value="Sí">Sí</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+
+  <!-- ============================= -->
+  <h3 class="section-title">Desarrollo verbal en la entrevista</h3>
+
+    <div class="full-width">
+      <label>Descripción del lenguaje utilizado</label>
+      <textarea formControlName="desarrolloVerbal" rows="3"></textarea>
+    </div>
+
+
+  <!-- ============================= -->
+  <h3 class="section-title">Objetivos personales</h3>
+ 
+    <div><label>Corto plazo</label><input formControlName="objetivoCortoPersonal" /></div>
+    <div><label>Mediano plazo</label><input formControlName="objetivoMedianoPersonal" /></div>
+    <div><label>Largo plazo</label><input formControlName="objetivoLargoPersonal" /></div>
+
+
+  <!-- ============================= -->
+  <h3 class="section-title">Objetivos laborales</h3>
+
+    <div><label>Corto plazo</label><input formControlName="objetivoCortoLaboral" /></div>
+    <div><label>Mediano plazo</label><input formControlName="objetivoMedianoLaboral" /></div>
+    <div><label>Largo plazo</label><input formControlName="objetivoLargoLaboral" /></div>
+    <div><label>Qué espera de la empresa</label><input formControlName="esperaEmpresa" /></div>
+
+
+  <!-- ============================= -->
+  <h3 class="section-title">Aspectos relevantes</h3>
+
+    <div>
+      <label>Cuenta con familiares o conocidos dentro de la empresa</label>
+      <select formControlName="tieneFamiliares">
+        <option value="No">No</option>
+        <option value="Sí">Sí</option>
+      </select>
+    </div>
+
+
+  <!-- ============================= -->
+  <h3 class="section-title">Observaciones y comentarios área laboral</h3>
+  
+    <div>
+      <label>Presentó documentación original</label>
+      <select formControlName="presentoDocumentacion">
+        <option value="">Seleccione</option>
+        <option value="Sí">Sí</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+    <div>
+      <label>Carece de antecedentes penales/policíacos</label>
+      <select formControlName="careceAntecedentes">
+        <option value="">Seleccione</option>
+        <option value="Sí">Sí</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+    <div>
+      <label>Alteraciones en la documentación</label>
+      <select formControlName="alteracionesDocumentacion">
+        <option value="">Seleccione</option>
+        <option value="Sí">Sí</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+
+</div>

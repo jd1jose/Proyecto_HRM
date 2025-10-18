@@ -1,0 +1,22 @@
+<div [formGroup]="form" class="tabla-wrapper antecedentes">
+  <table class="table table-academico">
+    <thead>
+      <tr>
+        <th>Pregunta</th>
+        <th>Respuesta</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let campo of listaCampos">
+        <td>{{ campo.label }}</td>
+        <td>
+          <select [formControlName]="campo.name">
+            <option value="">Seleccione…</option>
+            <option [value]="true">Sí</option>
+            <option [value]="false">No</option>
+          </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

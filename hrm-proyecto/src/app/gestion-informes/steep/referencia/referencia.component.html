@@ -1,0 +1,53 @@
+<div [formGroup]="form">
+  <div formArrayName="referenciasPersonales">
+    <div *ngFor="let ref of referenciasPersonales.controls; let i = index" [formGroupName]="i" class="form-card">
+      <div class="form-grid-2">
+        <input formControlName="nombre" placeholder="Nombre de contacto">
+        <input formControlName="telefono" placeholder="Teléfono">
+        <input formControlName="edad" placeholder="Edad">
+        <input formControlName="tiempoConocerse" placeholder="Tiempo de conocerse">
+        <input formControlName="comoSeConocieron" placeholder="Cómo se conocieron">
+        <input formControlName="descripcion" placeholder="Descripción">
+        <button type="button" (click)="eliminarReferenciaPersonal(i)" class="btn-delete">Eliminar</button>
+      </div>
+    </div>
+    <button type="button" (click)="agregarReferenciaPersonal()" class="btn-add">Agregar Referencia Personal</button>
+  </div>
+
+  <hr>
+
+  <h5>Referencias Familiares</h5>
+  <div formArrayName="referenciasFamiliares">
+    <div *ngFor="let ref of referenciasFamiliares.controls; let i = index" [formGroupName]="i" class="form-card">
+      <div class="form-grid-2">
+        <input formControlName="nombre" placeholder="Nombre">
+        <input formControlName="parentesco" placeholder="Parentesco">
+        <input formControlName="telefono" placeholder="Teléfono">
+        <input formControlName="edad" placeholder="Edad">
+        <input formControlName="profesion" placeholder="Profesión u oficio">
+        <input formControlName="considera" placeholder="Cómo lo considera">
+        <button type="button" (click)="eliminarReferenciaFamiliar(i)" class="btn-delete">Eliminar</button>
+      </div>
+
+    </div>
+    <button type="button" (click)="agregarReferenciaFamiliar()" class="btn-add">Agregar Referencia Familiar</button>
+  </div>
+
+  <hr>
+
+  <h5>Referencias del Vecindario</h5>
+  <div formArrayName="referenciasVecindario">
+    <div *ngFor="let ref of referenciasVecindario.controls; let i = index" [formGroupName]="i" class="form-card">
+      <div class="form-grid-2">
+        <input formControlName="direccion" placeholder="Dirección">
+        <input formControlName="atendio" placeholder="Quién atendió">
+        <input formControlName="tiempoVecino" placeholder="Tiempo de conocerlo">
+        <input formControlName="descripcion" placeholder="Descripción">
+        <button type="button" (click)="eliminarReferenciaVecino(i)" class="btn-delete">Eliminar</button>
+      </div>
+
+    </div>
+    <button type="button" (click)="agregarReferenciaVecino()" class="btn-add">Agregar Referencia Vecinal</button>
+  </div>
+
+</div>

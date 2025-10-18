@@ -1,0 +1,38 @@
+<nav class="bg-white shadow-md w-64 h-screen fixed left-0 top-0 flex flex-col">
+  <div class="p-6 border-b flex justify-center">
+    <img src="assets/logo-hrm.png" alt="HRM Consulting" class="h-12">
+  </div>
+
+  <ul class="flex-1 mt-6 space-y-1">
+    <li>
+      <button (click)="navigateTo('/bandeja/principal')" 
+        class="w-full text-left px-6 py-2 hover:bg-green-100 flex items-center gap-2">
+        🏠 <span>Dashboard</span>
+      </button>
+    </li>
+    <li>
+      <button (click)="navigateTo('/vacantes')" 
+        class="w-full text-left px-6 py-2 hover:bg-green-100 flex items-center gap-2">
+        📋 <span>Vacantes</span>
+      </button>
+    </li>
+    <li>
+      <button (click)="navigateTo('/postulantes')" 
+        class="w-full text-left px-6 py-2 hover:bg-green-100 flex items-center gap-2">
+        👥 <span>Postulantes</span>
+      </button>
+    </li>
+    <li>
+      <button (click)="navigateTo('/informes')" 
+        class="w-full text-left px-6 py-2 hover:bg-green-100 flex items-center gap-2">
+        🧾 <span>Informes</span>
+      </button>
+    </li>
+  </ul>
+
+  <div class="border-t p-4">
+    <button (click)="logout()" class="w-full text-left text-red-600 hover:bg-red-50 px-6 py-2 rounded-md flex items-center gap-2">
+      🚪 <span>Cerrar sesión</span>
+    </button>
+  </div>
+</nav>

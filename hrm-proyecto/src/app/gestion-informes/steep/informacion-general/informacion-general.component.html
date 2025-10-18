@@ -1,0 +1,234 @@
+<div class="form-grid" [formGroup]="form">
+  <div>
+    <label>Nombre Completo</label>
+    <input formControlName="nombreCompleto" />
+  </div>
+
+  <div>
+    <label>Dirección</label>
+    <input formControlName="direccion" />
+  </div>
+
+  <div>
+    <label>Sexo</label>
+    <select formControlName="sexo">
+      <option value="">Seleccione…</option>
+      <option *ngFor="let s of sexos" [value]="s.value">{{ s.label }}</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Edad</label>
+    <input type="number" formControlName="edad" />
+  </div>
+
+  <div>
+    <label>Fecha de nacimiento</label>
+    <input type="date" formControlName="fechaNacimiento" />
+  </div>
+
+  <div>
+    <label>Lugar de nacimiento</label>
+    <input formControlName="lugarNacimiento" />
+  </div>
+
+  <div>
+    <label>No. único de identificación (CUI)</label>
+    <input formControlName="cui" />
+  </div>
+  <div>
+    <label>Extendida</label>
+    <input formControlName="extendida" />
+  </div>
+
+  <div>
+    <label>Estado civil</label>
+    <select formControlName="estadoCivil">
+      <option value="">Seleccione…</option>
+      <option *ngFor="let e of estadosCiviles" [value]="e">{{ e }}</option>
+    </select>
+  </div>
+
+  <!-- Licencia de conducir -->
+  <div>
+
+    <label>Licencia de conducir</label>
+    <select formControlName="licenciaConducir" (change)="onLicenciaChange($event)">
+      <option value="">Seleccione…</option>
+      <option [value]="true">Sí</option>
+      <option [value]="false">No</option>
+    </select>
+
+  </div>
+
+  <div>
+    <label>Tipo</label>
+    <input formControlName="licenciaTipo" placeholder="A / B / C ..." />
+  </div>
+
+  <div>
+    <label>No.</label>
+    <input formControlName="licenciaNumero" />
+  </div>
+
+  <div>
+    <label>Vigencia de la licencia</label>
+    <input type="date" formControlName="licenciaVigencia" />
+  </div>
+
+  <div>
+    <label>No. de N.I.T.</label>
+    <input formControlName="nit" />
+  </div>
+
+  <div>
+    <label>No. afiliación IGSS</label>
+    <input formControlName="igss" />
+  </div>
+
+  <div>
+    <label>No. afiliación IRTRA</label>
+    <input formControlName="irtra" />
+  </div>
+
+  <div>
+    <label>Pasaporte</label>
+    <input formControlName="pasaporte" />
+  </div>
+
+  <div>
+    <label>Visa americana</label>
+    <div>
+      <select formControlName="visaAmericana">
+        <option value="">Seleccione…</option>
+        <option [value]="true">Sí</option>
+        <option [value]="false">No</option>
+      </select>
+    </div>
+  </div>
+
+  <div>
+    <label>Teléfono casa</label>
+    <input formControlName="telCasa" />
+  </div>
+
+  <div>
+    <label>Teléfono celular</label>
+    <input formControlName="telCelular" />
+  </div>
+
+  <div>
+    <label>Teléfono emergencia</label>
+    <input formControlName="telEmergencia" />
+  </div>
+
+  <div>
+    <label>Contacto de emergencia</label>
+    <input formControlName="contactoEmergencia" />
+  </div>
+
+  <div>
+    <label>Parentesco</label>
+    <input formControlName="parentesco" />
+  </div>
+
+  <div>
+    <label>Correo electrónico</label>
+    <input type="email" formControlName="email" />
+  </div>
+
+  <!-- Trabajo -->
+  <div>
+    <label>Trabaja actualmente</label>
+    <div>
+      <select formControlName="trabajaActualmente" (change)="wireUpReactions($event)">
+        <option value="">Seleccione…</option>
+        <option [value]="true">Sí</option>
+        <option [value]="false">No</option>
+      </select>
+    </div>
+  </div>
+
+  <div>
+    <label>Empresa</label>
+    <input formControlName="empresa" />
+  </div>
+
+  <div>
+    <label>Empresa solicitante</label>
+    <input formControlName="empresaSolicitante" />
+  </div>
+
+  <div>
+    <label>Labora para la empresa</label>
+    <div> 
+       <select formControlName="laboraParaLaEmpresa" >
+        <option value="">Seleccione…</option>
+        <option [value]="true">Sí</option>
+        <option [value]="false">No</option>
+      </select>
+    </div>
+  </div>
+
+  <div>
+    <label>Puesto al que aplica</label>
+    <input formControlName="puestoAplica" />
+  </div>
+
+  <div>
+    <label>Medio de transporte</label>
+    <input formControlName="medioTransporte" />
+  </div>
+
+  <div>
+    <label>Religión</label>
+    <input formControlName="religion" />
+  </div>
+
+  <div>
+    <label>Tipo de sangre</label>
+    <select formControlName="tipoSangre">
+      <option value="">Seleccione…</option>
+      <option *ngFor="let t of tiposSangre" [value]="t">{{ t }}</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Estatura metros</label>
+    <input formControlName="estatura" placeholder="Ej: 1.8 m" />
+  </div>
+
+  <div>
+    <label>Peso libras</label>
+    <input formControlName="peso" placeholder="Ej: 150 lb" />
+  </div>
+ <div>
+    <label>Cicatrices visibles en el rostro</label>
+    <input formControlName="cicatrices" placeholder="" />
+  </div>
+  <div>
+    <label>Color de cabello</label>
+    <input formControlName="cabello" placeholder="" />
+  </div>
+  <div>
+    <label>Tipo de cabello</label>
+    <input formControlName="tipoCabello" placeholder="" />
+  </div>
+   <div>
+    <label>Apodo</label>
+    <input formControlName="apodo" placeholder="" />
+  </div>
+  <div>
+    <label>Profesión</label>
+    <input formControlName="profesion" />
+  </div>
+
+  <div>
+    <label>Pretensión</label>
+    <input formControlName="pretension" />
+  </div>
+  <div>
+    <label>Observaciones y Comentarios</label>
+    <textarea formControlName="comentarios" class="form-control" ></textarea>
+  </div>
+</div>

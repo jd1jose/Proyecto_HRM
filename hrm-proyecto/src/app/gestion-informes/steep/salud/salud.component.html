@@ -1,0 +1,385 @@
+<div [formGroup]="form" class="form-grid">
+
+    <!-- 🏥 DATOS CLÍNICOS -->
+    <h4 class="section-title">Datos Clínicos</h4>
+    <div><label>Servicios médicos que utiliza</label><input formControlName="serviciosMedicos"
+            placeholder="Públicos / Privados"></div>
+    <div><label>Frecuencia con la que asiste al médico</label><input formControlName="frecuenciaMedico"
+            placeholder="Ej. 1 vez al año"></div>
+    <div><label>Servicios médicos con los que cuenta</label><input formControlName="serviciosConQueCuenta"
+            placeholder="Ej. Seguro familiar"></div>
+
+    <!-- 🧠 DESCRIPCIÓN FÍSICA Y SALUD -->
+    <h4 class="section-title">Descripción Física y Salud</h4>
+    <div><label>Enfermedad congénita / hereditaria</label><select formControlName="enfermedadCongenita">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Deformidad congénita</label><select formControlName="deformidadCongenita">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Alergias a alimentos o medicamentos</label><select formControlName="alergias">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Enfermedades de los ojos</label><select formControlName="enfOjos">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Usa lentes</label><select formControlName="usaLentes">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>¿Debería utilizar lentes?</label><select formControlName="deberiaUsarLentes">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>¿Oye usted bien?</label><select formControlName="oyeBien">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Usa aparatos para oír</label><select formControlName="usaAparatosOir">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Enfermedades de los oídos</label><select formControlName="enfOidos">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Enfermedades dentales</label><select formControlName="enfDentales">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Enfermedades de tiroides</label><select formControlName="enfTiroides">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Enfermedades respiratorias</label><select formControlName="enfRespiratorias">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Enfermedades de los pulmones</label><select formControlName="enfPulmones">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Enfermedades del corazón</label><select formControlName="enfCorazon">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Alteración de la tensión arterial</label><select formControlName="tensionArterial">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Enfermedades del sistema circulatorio</label><select formControlName="sistemaCirculatorio">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Enfermedades digestivas</label><select formControlName="enfDigestivas">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Enfermedades del hígado</label><select formControlName="enfHigado">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Alteraciones en los niveles de azúcar</label><select formControlName="nivelesAzucar">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Alteraciones metabólicas</label><select formControlName="alteracionesMetabolicas">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Enfermedades renales</label><select formControlName="enfRenales">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Infecciones en vías urinarias</label><select formControlName="infeccionesUrinarias">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Enfermedades de la piel</label><select formControlName="enfPiel">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Enfermedades infecciosas importantes</label><select formControlName="enfInfecciosas">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Ingresos hospitalarios</label><select formControlName="ingresosHospitalarios">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Operaciones o intervenciones</label><select formControlName="operaciones">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Accidentes graves</label><select formControlName="accidentes">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Fracturas</label><select formControlName="fracturas">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Secuelas</label><select formControlName="secuelas">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Padece enfermedades crónicas</label><select formControlName="enfCronicas">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Enfermedades contagiosas</label><select formControlName="enfContagiosas">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Ha recibido tratamientos psicológicos o psiquiátricos</label><select
+            formControlName="tratamientosPsicologicos">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Enfermedades de transmisión sexual</label><select formControlName="enfTransmisionSexual">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Actualmente toma medicamentos</label><select formControlName="tomaMedicamentos">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Medicamentos permanentes</label><select formControlName="medicamentosPermanentes">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Se enferma con frecuencia</label><select formControlName="enfermaFrecuencia">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Desmayos o convulsiones</label><select formControlName="desmayos">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Se encuentra bajo tratamiento médico</label><select formControlName="tratamientoMedico">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Ha asistido en las últimas 2 semanas al médico</label><select formControlName="asistioUltimasSemanas">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+
+    <!-- 🧬 INTERROGANTES COVID -->
+    <h4 class="section-title">Interrogantes por síntomas de COVID-19</h4>
+    <div><label>Contacto con personas positivas</label><select formControlName="contactoCovid">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Presentó síntomas en los últimos 14 días</label><select formControlName="sintomasCovid">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Ha sido positivo a COVID-19</label><select formControlName="positivoCovid">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Fecha aproximada de contagio</label><input type="month" formControlName="fechaContagio"></div>
+    <div><label>Algún familiar dio positivo</label><select formControlName="familiarCovid">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Fecha de contagio familiar</label><input type="month" formControlName="fechaContagioFamiliar"></div>
+    <div><label>Vacunado o contempla vacunarse</label><select formControlName="vacunadoCovid">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Cuántas dosis posee</label><input type="number" formControlName="cantidadDosis" min="0"></div>
+    <div><label>Vacunas suministradas SARS-COV-2</label><input formControlName="tipoVacuna"
+            placeholder="Ej. AstraZeneca, Pfizer, Moderna"></div>
+
+    <!-- 👩‍⚕️ INTERROGANTES PARA MUJERES -->
+    <h4 class="section-title">Interrogantes para mujeres</h4>
+    <div><label>¿Ha presentado problemas ginecológicos?</label><select formControlName="problemasGinecologicos">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>¿Ha presentado problemas mamarios?</label><select formControlName="problemasMamarios">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Examen de rutina anual</label><input formControlName="examenRutina"
+            placeholder="Ej. Examen de rutina anual"></div>
+    <div><label>Tiene revisiones ginecológicas frecuentes</label><select formControlName="revisionesGinecologicas">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>¿Está actualmente embarazada o cree estarlo?</label><select formControlName="embarazada">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <!-- 👕 MEDIDAS Y TALLAJE -->
+    <h4 class="section-title">Medidas y Tallaje</h4>
+    <div><label>Talla de camisa</label><input formControlName="tallaCamisa" placeholder="Ej. Pequeña, Mediana, Grande">
+    </div>
+    <div><label>Talla de pantalón</label><input formControlName="tallaPantalon" placeholder="Ej. 28, 30, 32"></div>
+    <div><label>Talla de calzado</label><input formControlName="tallaCalzado" placeholder="Ej. 40, 42"></div>
+    <div><label>Altura (m)</label><input type="number" step="0.01" formControlName="altura" placeholder="Ej. 1.65">
+    </div>
+    <div><label>Peso (lbs o kg)</label><input type="number" formControlName="peso" placeholder="Ej. 145"></div>
+    <div><label>Complexión</label>
+        <select formControlName="complexion">
+            <option value="">Seleccione</option>
+            <option value="Delgada">Delgada</option>
+            <option value="Normal">Normal</option>
+            <option value="Robusta">Robusta</option>
+        </select>
+    </div>
+    <!-- 🚬 CONSUMO DE TABACO -->
+    <h4 class="section-title">Consumo de Tabaco</h4>
+    <div><label>Usted fuma</label><select formControlName="ustedFuma">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Fuma actualmente</label><select formControlName="fumaActualmente">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Fumaba anteriormente</label><select formControlName="fumabaAnteriormente">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>En su vida ha fumado</label><select formControlName="haFumado">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+
+    <!-- 🍷 CONSUMO DE BEBIDAS ALCOHÓLICAS -->
+    <h4 class="section-title">Consumo de Bebidas Alcohólicas</h4>
+    <div><label>Ingiere bebidas alcohólicas</label><select formControlName="ingiereAlcohol">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Actualmente bebe</label><select formControlName="actualmenteBebe">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>En su vida ha ingerido alcohol</label><select formControlName="haIngeridoAlcohol">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Es usted exalcohólico</label><select formControlName="exAlcoholico">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+
+    <!-- 💊 CONSUMO DE DROGAS PSICOACTIVAS -->
+    <h4 class="section-title">Consumo de Drogas Psicoactivas, Estupefacientes o Alucinógenas</h4>
+    <div><label>Consume usted drogas psicoactivas</label><select formControlName="consumeDrogas">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Conoce las drogas psicoactivas físicamente</label><select formControlName="conoceDrogas">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Ha probado o experimentado alguna vez con drogas psicoactivas</label><select
+            formControlName="haProbadoDrogas">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+
+    <!-- 🏃 HÁBITOS, ACTIVIDAD FÍSICA Y SUEÑO -->
+    <h4 class="section-title">Hábitos, Actividad Física / Sueño</h4>
+    <div><label>Practica algún tipo de deporte</label><select formControlName="practicaDeporte">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Qué deporte practica</label><input formControlName="deportePractica"
+            placeholder="Ej. Ciclismo, natación"></div>
+    <div><label>Con qué frecuencia hace ejercicio en la semana</label><input formControlName="frecuenciaEjercicio"
+            placeholder="Ej. 5 veces"></div>
+    <div><label>Pertenece a algún club social o deportivo</label><select formControlName="clubDeportivo">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Cuántas horas duerme</label><input formControlName="horasSueno" placeholder="Ej. 07:00 - 08:00"></div>
+    <div><label>Padece de insomnio</label><select formControlName="padeceInsomnio">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Toma somníferos para dormir</label><select formControlName="tomaSomniferos">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Realiza tareas domésticas</label><select formControlName="tareasDomesticas">
+            <option value="">Seleccione</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select></div>
+    <div><label>Actividades en su tiempo libre</label><input formControlName="actividadesTiempoLibre"
+            placeholder="Ej. Acampar, leer, ciclismo"></div>
+
+</div>

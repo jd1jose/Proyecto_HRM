@@ -1,0 +1,49 @@
+<div class="min-h-screen bg-gradient-to-r from-green-100 via-white to-orange-100">
+  <div class="max-w-4xl mx-auto bg-white shadow-md p-6 rounded-lg">
+    <h2 style="color: var(--color-verde); font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">Ingreso de Postulante</h2>
+
+    <form [formGroup]="postulanteForm" (ngSubmit)="guardar()" class="grid grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm font-semibold mb-1">Nombre completo</label>
+        <input type="text" formControlName="nombre" class="w-full border rounded p-2" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold mb-1">Correo electrónico</label>
+        <input type="email" formControlName="correo" class="w-full border rounded p-2" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold mb-1">Teléfono</label>
+        <input type="tel" formControlName="telefono" class="w-full border rounded p-2" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold mb-1">Vacante aplicada</label>
+        <select formControlName="vacante" class="w-full border rounded p-2">
+          <option value="">Seleccione...</option>
+          <option *ngFor="let v of vacantes" [value]="v">{{ v }}</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold mb-1">Nivel educativo</label>
+        <select formControlName="educacion" class="w-full border rounded p-2">
+          <option value="">Seleccione...</option>
+          <option *ngFor="let e of educacion" [value]="e">{{ e }}</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold mb-1">Experiencia</label>
+        <input type="text" formControlName="experiencia" class="w-full border rounded p-2" />
+      </div>
+
+      <div class="col-span-2 text-right mt-4">
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+          Guardar Postulante
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

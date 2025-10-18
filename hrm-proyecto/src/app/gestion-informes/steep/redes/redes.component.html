@@ -1,0 +1,81 @@
+<div [formGroup]="form" class="form-grid">
+
+  <h4 class="section-title">Uso de Redes Sociales</h4>
+
+  <div>
+    <label>¿Cuenta con redes sociales?</label>
+    <select formControlName="usaRedesSociales">
+      <option value="">Seleccione</option>
+      <option value="Sí">Sí</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+
+  <div>
+    <label>¿Deja de realizar actividades por revisar las redes sociales?</label>
+    <select formControlName="dejaActividadesPorRedes">
+      <option value="">Seleccione</option>
+      <option value="Sí">Sí</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+
+  <div>
+    <label>¿A qué hora está más activo en las redes sociales?</label>
+    <input formControlName="horaMasActiva" placeholder="Ej. 19:00 - 20:00 horas">
+  </div>
+
+  <div>
+    <label>¿Antes de dormir revisa las redes sociales?</label>
+    <select formControlName="revisaAntesDormir">
+      <option value="">Seleccione</option>
+      <option value="Sí">Sí</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+
+  <div>
+    <label>¿Cuánto tiempo considera que pasa en redes sociales?</label>
+    <input formControlName="tiempoEnRedes" placeholder="Ej. Poco / Mucho / Regular">
+  </div>
+
+  <div>
+    <label>¿Cuánto tiempo chatea con amigos?</label>
+    <input formControlName="tiempoChatAmigos" placeholder="Ej. 00:10 minutos">
+  </div>
+
+  <div>
+    <label>¿Cuánto tiempo chatea con familiares?</label>
+    <input formControlName="tiempoChatFamiliares" placeholder="Ej. 00:05 minutos">
+  </div>
+
+  <div>
+    <label>¿Cuánto tiempo platica con su pareja?</label>
+    <input formControlName="tiempoPlaticaPareja" placeholder="Ej. 00:00 minutos">
+  </div>
+
+  <div>
+    <label>¿Ha dejado de utilizar redes sociales?</label>
+    <select formControlName="haDejadoRedes">
+      <option value="">Seleccione</option>
+      <option value="Sí">Sí</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+
+  <div class="col-span-2">
+    <label>¿Qué tipo de contenido ve en redes sociales?</label>
+    <textarea formControlName="tipoContenido" rows="2"
+      placeholder="Ej. Noticias, entretenimiento, información"></textarea>
+  </div>
+  <h4 class="section-title">Captura de Perfil o Red Social</h4>
+  <div class="col-span-2">
+    <label>Subir imagen (PNG o JPG)</label>
+    <input type="file" accept=".png, .jpg, .jpeg" (change)="onFileSelected($event)" />
+
+    <!-- Vista previa -->
+    <div *ngIf="previewUrl" style="margin-top: 10px;">
+      <img [src]="previewUrl" alt="Vista previa" style="max-width: 200px; border-radius: 8px; border: 1px solid #ddd;">
+    </div>
+  </div>
+</div>
