@@ -1,0 +1,82 @@
+<div class="step-content">
+  <h3>Datos Económicos</h3>
+
+  <form [formGroup]="form" class="economicos-grid">
+    <section class="grupo">
+      <div class="row">
+        <div class="field">
+          <label for="otros-ingresos">¿Tiene otros ingresos?</label>
+          <select id="otros-ingresos" formControlName="otrosIngresos">
+            <option value="">Seleccione...</option>
+            <option [ngValue]="true">Sí</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </div>
+        <div class="field textarea-field">
+          <label for="descripcion-ingresos">De ser positivo describa cuáles</label>
+          <textarea
+            id="descripcion-ingresos"
+            rows="2"
+            formControlName="descripcionIngresos"
+            placeholder="Ej. Venta de productos, servicios freelance, etc."
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="conyuge-trabaja">¿Su cónyuge trabaja?</label>
+          <select id="conyuge-trabaja" formControlName="conyugeTrabaja">
+            <option value="">Seleccione...</option>
+            <option [ngValue]="true">Sí</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="casa-propia">¿Vive en casa propia?</label>
+          <select id="casa-propia" formControlName="casaPropia">
+            <option value="">Seleccione...</option>
+            <option [ngValue]="true">Sí</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="paga-renta">¿Paga renta?</label>
+          <select id="paga-renta" formControlName="pagaRenta">
+            <option value="">Seleccione...</option>
+            <option [ngValue]="true">Sí</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="tiene-deudas">¿Tiene deudas?</label>
+          <select id="tiene-deudas" formControlName="tieneDeudas">
+            <option value="">Seleccione...</option>
+            <option [ngValue]="true">Sí</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="deuda-judicial">¿Alguna deuda ha pasado a cobro judicial?</label>
+          <select id="deuda-judicial" formControlName="deudaCobroJudicial">
+            <option value="">Seleccione...</option>
+            <option [ngValue]="true">Sí</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="abono-mensual">¿Cuánto abona mensualmente?</label>
+          <input
+            id="abono-mensual"
+            type="text"
+            formControlName="abonoMensual"
+            placeholder="Ej. Q 2,000"
+          />
+        </div>
+      </div>
+    </section>
+  </form>
+</div>

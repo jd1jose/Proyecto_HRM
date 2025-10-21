@@ -1,0 +1,117 @@
+<div class="step-content">
+  <h3>Salud</h3>
+
+  <form [formGroup]="form" class="salud-grid">
+    <div class="field">
+      <label for="estado-salud">¿Cómo considera su estado de salud?</label>
+      <select id="estado-salud" formControlName="estadoSalud">
+        <option value="">Seleccione...</option>
+        <option value="excelente">Excelente</option>
+        <option value="buena">Buena</option>
+        <option value="regular">Regular</option>
+        <option value="mala">Mala</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="padecio-covid">¿Ha padecido de COVID-19?</label>
+      <select id="padecio-covid" formControlName="padecioCovid">
+        <option value="">Seleccione...</option>
+        <option [ngValue]="true">Sí</option>
+        <option [ngValue]="false">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="vacunacion-covid">¿Cuenta con esquema de vacunación Covid-19?</label>
+      <select id="vacunacion-covid" formControlName="tieneVacunacionCovid">
+        <option value="">Seleccione...</option>
+        <option [ngValue]="true">Sí</option>
+        <option [ngValue]="false">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="numero-dosis">Número de dosis aplicadas</label>
+      <input
+        id="numero-dosis"
+        type="number"
+        min="0"
+        formControlName="numeroDosisCovid"
+        placeholder="Ej. 3"
+      />
+    </div>
+
+    <div class="field">
+      <label for="fracturas">¿Ha sufrido fracturas?</label>
+      <select id="fracturas" formControlName="sufrioFracturas">
+        <option value="">Seleccione...</option>
+        <option [ngValue]="true">Sí</option>
+        <option [ngValue]="false">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="operaciones">¿Ha sufrido una operación o intervención?</label>
+      <select id="operaciones" formControlName="sufrioOperacion">
+        <option value="">Seleccione...</option>
+        <option [ngValue]="true">Sí</option>
+        <option [ngValue]="false">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="enfermedad-cronica">¿Padece alguna enfermedad crónica?</label>
+      <select id="enfermedad-cronica" formControlName="enfermedadCronica">
+        <option value="">Seleccione...</option>
+        <option [ngValue]="true">Sí</option>
+        <option [ngValue]="false">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="enferma-frecuencia">¿Se enferma con frecuencia?</label>
+      <select id="enferma-frecuencia" formControlName="enfermaFrecuencia">
+        <option value="">Seleccione...</option>
+        <option [ngValue]="true">Sí</option>
+        <option [ngValue]="false">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="practica-deportes">¿Practica deportes?</label>
+      <select id="practica-deportes" formControlName="practicaDeportes">
+        <option value="">Seleccione...</option>
+        <option [ngValue]="true">Sí</option>
+        <option [ngValue]="false">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="club">¿Pertenece a algún club social o deportivo?</label>
+      <select id="club" formControlName="perteneceClub">
+        <option value="">Seleccione...</option>
+        <option [ngValue]="true">Sí</option>
+        <option [ngValue]="false">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="pasatiempo">¿Tiene algún pasatiempo?</label>
+      <select id="pasatiempo" formControlName="tienePasatiempo">
+        <option value="">Seleccione...</option>
+        <option [ngValue]="true">Sí</option>
+        <option [ngValue]="false">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="meta-vida">¿Cuál es su meta en la vida?</label>
+      <select id="meta-vida" formControlName="metaVida">
+        <option value="">Seleccione...</option>
+        <option [ngValue]="true">Sí</option>
+        <option [ngValue]="false">No</option>
+      </select>
+    </div>
+  </form>
+</div>

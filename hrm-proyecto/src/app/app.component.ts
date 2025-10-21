@@ -21,7 +21,7 @@ export class AppComponent {
 
   isLoggedIn(): boolean {
     if (isPlatformBrowser(this.platformId)) {
-      return !!localStorage.getItem('token');
+      return !!sessionStorage.getItem('token');
     }
     return false;
   }

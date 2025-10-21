@@ -17,7 +17,7 @@ export class MenuComponent {
   constructor(private router: Router) {}
 
   logout() {
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
 

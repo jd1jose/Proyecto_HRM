@@ -1,0 +1,118 @@
+<div class="step-content">
+  <h3>Aspectos de Consumo</h3>
+
+  <form [formGroup]="form" class="consumo-grid">
+    <section class="grupo">
+      <div class="row">
+        <div class="field half textarea-field">
+          <label for="tiene-tatuajes">¿Tiene tatuajes? (indique área y significado)</label>
+          <textarea
+            id="tiene-tatuajes"
+            rows="2"
+            formControlName="tieneTatuajes"
+            placeholder="Ej. Sí, en el antebrazo (significa fortaleza)"
+          ></textarea>
+        </div>
+        <div class="field half">
+          <label for="bebe">¿Bebe?</label>
+          <select id="bebe" formControlName="bebe">
+            <option value="">Seleccione...</option>
+            <option [ngValue]="true">Sí</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </div>
+        <div class="field half">
+          <label for="bebe-frecuencia">Si bebe, indique cada cuánto</label>
+          <input
+            id="bebe-frecuencia"
+            type="text"
+            formControlName="bebeFrecuencia"
+            placeholder="Ej. Socialmente, dos veces al mes"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field half">
+          <label for="fuma">¿Fuma?</label>
+          <select id="fuma" formControlName="fuma">
+            <option value="">Seleccione...</option>
+            <option [ngValue]="true">Sí</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </div>
+        <div class="field half">
+          <label for="fuma-frecuencia">Si fuma, indique cada cuánto</label>
+          <input
+            id="fuma-frecuencia"
+            type="text"
+            formControlName="fumaFrecuencia"
+            placeholder="Ej. 5 cigarrillos al día"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="puede-viajar">¿Podría viajar?</label>
+          <select id="puede-viajar" formControlName="puedeViajar">
+            <option value="">Seleccione...</option>
+            <option [ngValue]="true">Sí</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="cambiar-residencia">¿Dispuesto a cambiar de residencia?</label>
+          <select id="cambiar-residencia" formControlName="cambiarResidencia">
+            <option value="">Seleccione...</option>
+            <option [ngValue]="true">Sí</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="afiliado-sindicato">¿Ha estado afiliado a algún sindicato?</label>
+          <select id="afiliado-sindicato" formControlName="afiliadoSindicato">
+            <option value="">Seleccione...</option>
+            <option [ngValue]="true">Sí</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="consumo-drogas">¿Ha consumido algún tipo de droga?</label>
+          <select id="consumo-drogas" formControlName="consumioDrogas">
+            <option value="">Seleccione...</option>
+            <option [ngValue]="true">Sí</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="antecedente-penal">¿Posee antecedentes penales o policiacos?</label>
+          <select id="antecedente-penal" formControlName="tieneAntecedentes">
+            <option value="">Seleccione...</option>
+            <option [ngValue]="true">Sí</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field half">
+          <label for="fecha-disponibilidad">¿En qué fecha podría presentarse a trabajar?</label>
+          <input id="fecha-disponibilidad" type="date" formControlName="fechaDisponibilidad" />
+        </div>
+        <div class="field half">
+          <label for="religion">¿Qué religión profesa?</label>
+          <input
+            id="religion"
+            type="text"
+            formControlName="religion"
+            placeholder="Ej. Católica"
+          />
+        </div>
+      </div>
+    </section>
+  </form>
+</div>

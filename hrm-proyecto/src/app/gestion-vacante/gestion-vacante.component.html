@@ -1,7 +1,16 @@
 <div class="min-h-screen bg-gradient-to-r from-green-100 via-white to-orange-100">
   <div class="max-w-5xl mx-auto bg-white shadow-md p-6 rounded-lg">
-    <h2 style="color: var(--color-verde); font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">Gestión de Vacante
+    <h2 style="color: var(--color-verde); font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">
+      Gestion de Vacante
     </h2>
+
+    <div *ngIf="mensajeExito" class="mb-4 rounded bg-green-100 p-3 text-sm text-green-700">
+      {{ mensajeExito }}
+    </div>
+
+    <div *ngIf="mensajeError" class="mb-4 rounded bg-red-100 p-3 text-sm text-red-700">
+      {{ mensajeError }}
+    </div>
 
     <form [formGroup]="vacanteForm" (ngSubmit)="guardar()" class="grid grid-cols-2 gap-4">
       <div>
@@ -10,17 +19,17 @@
       </div>
 
       <div class="col-span-2">
-        <label class="block text-sm font-semibold mb-1">Descripción del Puesto</label>
+        <label class="block text-sm font-semibold mb-1">Descripcion del Puesto</label>
         <textarea formControlName="descripcion" class="w-full border rounded p-2" rows="3"></textarea>
       </div>
 
       <div>
-        <label class="block text-sm font-semibold mb-1">Medio de contacto empresa</label>
+        <label class="block text-sm font-semibold mb-1">Correo electronico empresa</label>
         <input type="email" formControlName="contacto" class="w-full border rounded p-2" />
       </div>
 
       <div>
-        <label class="block text-sm font-semibold mb-1">Categoría</label>
+        <label class="block text-sm font-semibold mb-1">Categoria</label>
         <select formControlName="categoria" class="w-full border rounded p-2">
           <option value="">Seleccione...</option>
           <option *ngFor="let c of categorias" [value]="c">{{ c }}</option>
@@ -30,6 +39,7 @@
       <div>
         <label class="block text-sm font-semibold mb-1">Tipo de Contrato</label>
         <select formControlName="tipoContrato" class="w-full border rounded p-2">
+          <option value="">Seleccione...</option>
           <option *ngFor="let t of tiposContrato" [value]="t">{{ t }}</option>
         </select>
       </div>
@@ -37,13 +47,15 @@
       <div>
         <label class="block text-sm font-semibold mb-1">Experiencia requerida</label>
         <select formControlName="experiencia" class="w-full border rounded p-2">
+          <option value="">Seleccione...</option>
           <option *ngFor="let e of experiencia" [value]="e">{{ e }}</option>
         </select>
       </div>
 
       <div>
-        <label class="block text-sm font-semibold mb-1">Educación requerida</label>
+        <label class="block text-sm font-semibold mb-1">Educacion requerida</label>
         <select formControlName="educacion" class="w-full border rounded p-2">
+          <option value="">Seleccione...</option>
           <option *ngFor="let e of educacion" [value]="e">{{ e }}</option>
         </select>
       </div>
@@ -51,6 +63,7 @@
       <div>
         <label class="block text-sm font-semibold mb-1">Departamento</label>
         <select formControlName="departamento" class="w-full border rounded p-2">
+          <option value="">Seleccione...</option>
           <option *ngFor="let d of departamentos" [value]="d">{{ d }}</option>
         </select>
       </div>
@@ -58,33 +71,34 @@
       <div>
         <label class="block text-sm font-semibold mb-1">Ciudad</label>
         <select formControlName="ciudad" class="w-full border rounded p-2">
+          <option value="">Seleccione...</option>
           <option *ngFor="let c of ciudades" [value]="c">{{ c }}</option>
         </select>
       </div>
 
       <div>
         <label class="block text-sm font-semibold mb-1">Cantidad de Vacantes</label>
-        <input type="number" formControlName="cantidadVacantes" class="w-full border rounded p-2" />
+        <input type="number" formControlName="cantidadVacantes" class="w-full border rounded p-2" min="1" />
       </div>
 
       <div>
         <label class="block text-sm font-semibold mb-1">Salario</label>
-        <input type="number" formControlName="salario" class="w-full border rounded p-2" />
+        <input type="number" formControlName="salario" class="w-full border rounded p-2" min="0" step="0.01" />
       </div>
 
       <div>
         <label class="block text-sm font-semibold mb-1">Tipo de Pago</label>
         <select formControlName="tipoPago" class="w-full border rounded p-2">
+          <option value="">Seleccione...</option>
           <option *ngFor="let t of tipoPago" [value]="t">{{ t }}</option>
         </select>
       </div>
 
       <div class="col-span-2 text-right mt-4">
-        <button type="submit" class="btn-primary">
-          Guardar Vacante
+        <button type="submit" class="btn-primary" [disabled]="guardando">
+          {{ guardando ? 'Guardando...' : 'Guardar Vacante' }}
         </button>
       </div>
     </form>
   </div>
-
 </div>

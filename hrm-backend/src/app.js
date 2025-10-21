@@ -8,6 +8,7 @@ import { errorHandler } from './middlewares/errorHandler.js';
 import authRoutes from './routes/auth.routes.js';
 import usersRoutes from './routes/users.routes.js';
 import vacanciesRoutes from './routes/vacancies.routes.js';
+import postulantesRoutes from './routes/postulantes.routes.js';
 
 const app = express();
 app.use(express.json());
@@ -31,6 +32,7 @@ app.get('/api/health', (_req, res) => res.json({ status: 'ok' }));
 app.use('/api/auth', authRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/vacancies', vacanciesRoutes);
+app.use('/api/postulantes', postulantesRoutes);
 
 // Manejo de 404
 app.use((_req, res) => res.status(404).json({ message: 'Ruta no encontrada' }));
@@ -39,3 +41,4 @@ app.use((_req, res) => res.status(404).json({ message: 'Ruta no encontrada' }));
 app.use(errorHandler);
 
 export default app;
+

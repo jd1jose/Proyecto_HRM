@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     this.api.login(this.form.value).subscribe({
       next: (res) => {
         // { token, user: { id, nombre, email } }
-        localStorage.setItem('token', res.token);
+        sessionStorage.setItem('token', res.token);
         // redirige a tu ruta de bandeja principal definida en app.routes.ts
         this.router.navigate(['/bandeja/principal']);
       },

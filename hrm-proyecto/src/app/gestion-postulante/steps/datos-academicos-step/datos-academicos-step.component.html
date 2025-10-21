@@ -1,0 +1,214 @@
+<div class="step-content">
+  <h3>Datos Académicos</h3>
+
+  <form [formGroup]="form" class="academicos-grid">
+    <section class="grupo">
+      <header>Primaria</header>
+      <div >
+        <label for="primaria-establecimiento">Nombre del establecimiento</label>
+        <input
+          id="primaria-establecimiento"
+          type="text"
+          formControlName="primariaEstablecimiento"
+          placeholder="Ej. Escuela Oficial Urbana Mixta"
+        />
+      </div>
+      <div >
+        <label for="primaria-anios">Años de estudio</label>
+        <input
+          id="primaria-anios"
+          type="text"
+          formControlName="primariaAnios"
+          placeholder="Ej. 6 años"
+        />
+      </div>
+    </section>
+
+    <section class="grupo">
+      <header>Básicos</header>
+      <div >
+        <label for="basicos-establecimiento">Nombre del establecimiento</label>
+        <input
+          id="basicos-establecimiento"
+          type="text"
+          formControlName="basicosEstablecimiento"
+          placeholder="Ej. Instituto Nacional Mixto"
+        />
+      </div>
+      <div >
+        <label for="basicos-anios">Años de estudio</label>
+        <input
+          id="basicos-anios"
+          type="text"
+          formControlName="basicosAnios"
+          placeholder="Ej. 3 años"
+        />
+      </div>
+    </section>
+
+    <section class="grupo">
+      <header>Diversificado</header>
+      <div >
+        <div >
+          <label for="diversificado-establecimiento">Nombre del establecimiento</label>
+          <input
+            id="diversificado-establecimiento"
+            type="text"
+            formControlName="diversificadoEstablecimiento"
+            placeholder="Ej. Colegio Privado Los Pinos"
+          />
+        </div>
+        <div >
+          <label for="diversificado-carrera">Carrera</label>
+          <input
+            id="diversificado-carrera"
+            type="text"
+            formControlName="diversificadoCarrera"
+            placeholder="Ej. Bachiller en Ciencias y Letras"
+          />
+        </div>
+      </div>
+      <div >
+        <label for="diversificado-anios">Años de estudio</label>
+        <input
+          id="diversificado-anios"
+          type="text"
+          formControlName="diversificadoAnios"
+          placeholder="Ej. 2 años"
+        />
+      </div>
+    </section>
+
+    <section class="grupo">
+      <header>Carrera técnica</header>
+      <div>
+        <label for="tecnica-establecimiento">Nombre del establecimiento</label>
+        <input
+          id="tecnica-establecimiento"
+          type="text"
+          formControlName="tecnicaEstablecimiento"
+          placeholder="Ej. INTECAP"
+        />
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="tecnica-carrera">Carrera cursada</label>
+          <input
+            id="tecnica-carrera"
+            type="text"
+            formControlName="tecnicaCarrera"
+            placeholder="Ej. Desarrollo Web"
+          />
+        </div>
+        <div class="field">
+          <label for="tecnica-anios">Años de estudio</label>
+          <input
+            id="tecnica-anios"
+            type="text"
+            formControlName="tecnicaAnios"
+            placeholder="Ej. 1 año"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="grupo">
+      <header>Universidad</header>
+      <div >
+        <label for="universidad-cuenta">¿Cuenta con estudios universitarios?</label>
+        <select id="universidad-cuenta" formControlName="universidadCuenta">
+          <option value="">Seleccione...</option>
+          <option [ngValue]="true">Sí</option>
+          <option [ngValue]="false">No</option>
+        </select>
+      </div>
+      <div class="field textarea-field">
+        <label for="universidad-detalle">
+          Si estudia actualmente, indique horario (días y jornada), sede y semestre/trimestre a cursar
+        </label>
+        <textarea
+          id="universidad-detalle"
+          rows="3"
+          formControlName="universidadDetalle"
+          placeholder="Ej. Lunes a viernes por la noche, sede central, 4° semestre"
+        ></textarea>
+      </div>
+    </section>
+
+    <section class="grupo">
+      <header>Postgrados</header>
+      <div >
+        <label for="postgrado-cuenta">¿Cuenta con estudios a nivel Maestría o Doctorado?</label>
+        <select id="postgrado-cuenta" formControlName="postgradoCuenta">
+          <option value="">Seleccione...</option>
+          <option [ngValue]="true">Sí</option>
+          <option [ngValue]="false">No</option>
+        </select>
+      </div>
+      <div class="field textarea-field">
+        <label for="postgrado-detalle">Indique tipo de Maestría o Doctorado y si actualmente está cursándolo</label>
+        <textarea
+          id="postgrado-detalle"
+          rows="3"
+          formControlName="postgradoDetalle"
+          placeholder="Ej. Maestría en Administración de Empresas (en curso, 2° trimestre)"
+        ></textarea>
+      </div>
+    </section>
+
+    <section class="grupo full">
+      <header>Competencias adicionales</header>
+      <div class="row wrap">
+        <div class="field textarea-field half">
+          <label for="idiomas">Idiomas que domina (indique cuáles y porcentaje)</label>
+          <textarea
+            id="idiomas"
+            rows="2"
+            formControlName="idiomas"
+            placeholder="Ej. Inglés 80%, Francés 40%"
+          ></textarea>
+        </div>
+        <div class="field textarea-field half">
+          <label for="software">Software que domina</label>
+          <textarea
+            id="software"
+            rows="2"
+            formControlName="software"
+            placeholder="Ej. Office, SAP, AutoCAD"
+          ></textarea>
+        </div>
+      </div>
+      <div class="row wrap">
+        <div class="field textarea-field half">
+          <label for="maquinas">Máquinas de oficina o taller</label>
+          <textarea
+            id="maquinas"
+            rows="2"
+            formControlName="maquinas"
+            placeholder="Ej. Fotocopiadoras, torno"
+          ></textarea>
+        </div>
+        <div class="field textarea-field half">
+          <label for="otras-funciones">Otras funciones que domine</label>
+          <textarea
+            id="otras-funciones"
+            rows="2"
+            formControlName="otrasFunciones"
+            placeholder="Ej. Manejo de inventarios, liderazgo de equipos"
+          ></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section class="grupo">
+      <div >
+        <label for="experiencia-previa">¿Cuenta con experiencia laboral previa?</label>
+        <select id="experiencia-previa" formControlName="experienciaLaboral">
+          <option value="">Seleccione...</option>
+          <option [ngValue]="true">Sí</option>
+          <option [ngValue]="false">No</option>
+        </select>
+      </div>
+    </section>
+  </form>
+</div>

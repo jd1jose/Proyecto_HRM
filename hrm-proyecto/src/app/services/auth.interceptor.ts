@@ -5,7 +5,7 @@ import { throwError } from 'rxjs';
 // Interceptor que adjunta el token y maneja 401
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   try {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const authReq = token
       ? req.clone({ setHeaders: { Authorization: `Bearer ${token}` } })
       : req;
@@ -14,7 +14,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
       catchError((err: HttpErrorResponse) => {
         if (err.status === 401) {
           // Opcional: limpiar token o redirigir
-          // localStorage.removeItem('token');
+          // sessionStorage.removeItem('token');
           console.warn('API respondió 401 (Unauthorized).');
         }
         return throwError(() => err);
@@ -24,4 +24,3 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
     return next(req);
   }
 };
-

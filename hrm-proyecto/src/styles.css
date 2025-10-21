@@ -322,6 +322,117 @@ textarea:focus {
 .mat-mdc-outlined-button.mat-accent:hover {
   background: rgba(244, 119, 33, 0.08) !important;
 }
+
+/* ============================= */
+/* Overrides Gestión Postulante  */
+/* ============================= */
+.stepper-container .postulante-stepper .mat-horizontal-stepper-header-container {
+  gap: 0.4rem !important;
+  align-items: stretch !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  scrollbar-width: thin;
+}
+
+.stepper-container .postulante-stepper .mat-horizontal-stepper-header {
+  flex: 1 1 120px !important;
+  border-radius: 10px !important;
+  padding: 10px 8px !important;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease !important;
+  min-width: 110px !important;
+}
+
+.stepper-container .postulante-stepper .mat-horizontal-stepper-header:hover {
+  background-color: rgba(244, 119, 33, 0.08) !important;
+}
+
+.stepper-container .postulante-stepper .mat-step-label {
+  font-weight: 600 !important;
+  color: var(--color-gris) !important;
+  white-space: normal !important;
+  line-height: 1.15 !important;
+  text-align: center !important;
+  font-size: 0.88rem !important;
+}
+
+.stepper-container .postulante-stepper .mat-step-icon {
+  background-color: var(--color-verde) !important;
+  color: var(--color-blanco) !important;
+  font-weight: 600 !important;
+}
+
+.stepper-container .postulante-stepper .mat-step-icon-state-edit {
+  background-color: var(--color-naranja) !important;
+}
+
+.stepper-container .postulante-stepper .mat-step-header.mat-active .mat-step-icon {
+  background-color: var(--color-naranja) !important;
+  color: var(--color-blanco) !important;
+}
+
+.stepper-container .postulante-stepper .mat-step-header.mat-completed .mat-step-icon {
+  background-color: rgba(244, 119, 33, 0.85) !important;
+  color: var(--color-blanco) !important;
+}
+
+.stepper-container .postulante-stepper .mat-stepper-horizontal-line {
+  display: none !important;
+}
+
+.stepper-container .postulante-stepper .mat-stepper-horizontal {
+  padding: 0.35rem 0 1rem !important;
+}
+
+.stepper-container .postulante-stepper .mat-horizontal-content-container {
+  margin-top: 1.25rem !important;
+}
+
+.stepper-container .postulante-stepper .mat-step-header,
+.stepper-container .postulante-stepper .mat-stepper-horizontal-line {
+  box-shadow: none !important;
+}
+
+.stepper-container .stepper-actions .btn-primary.mat-mdc-button-base {
+  background-color: var(--color-naranja) !important;
+  color: var(--color-blanco) !important;
+  box-shadow: 0 12px 24px rgba(244, 119, 33, 0.25) !important;
+}
+
+.stepper-container .stepper-actions .btn-secondary.mat-mdc-button-base {
+  background-color: rgba(109, 190, 69, 0.16) !important;
+  color: var(--color-verde) !important;
+  border: 1px solid rgba(109, 190, 69, 0.4) !important;
+}
+
+.stepper-container .stepper-actions .btn-finalizar.mat-mdc-button-base {
+  background-color: var(--color-verde) !important;
+  color: var(--color-blanco) !important;
+  box-shadow: 0 12px 24px rgba(109, 190, 69, 0.25) !important;
+}
+
+.stepper-container .stepper-actions .btn-primary.mat-mdc-button-base:hover,
+.stepper-container .stepper-actions .btn-finalizar.mat-mdc-button-base:hover {
+  filter: brightness(0.95);
+}
+
+.stepper-container .stepper-actions .btn-secondary.mat-mdc-button-base:hover {
+  background-color: rgba(109, 190, 69, 0.22) !important;
+}
+
+.stepper-container .postulante-stepper .mat-horizontal-stepper-header-container .mat-horizontal-stepper-header {
+  min-width: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .stepper-container .postulante-stepper .mat-horizontal-stepper-header {
+    flex: 1 1 110px !important;
+    padding: 8px 6px !important;
+  }
+
+  .stepper-container .postulante-stepper .mat-step-label {
+    font-size: 0.8rem !important;
+  }
+}
 /* ============================= */
 /* 🧩 Layouts auxiliares */
 /* ============================= */

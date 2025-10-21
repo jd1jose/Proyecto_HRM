@@ -1,49 +1,76 @@
-<div class="min-h-screen bg-gradient-to-r from-green-100 via-white to-orange-100">
-  <div class="max-w-4xl mx-auto bg-white shadow-md p-6 rounded-lg">
-    <h2 style="color: var(--color-verde); font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">Ingreso de Postulante</h2>
+<div class="postulante-layout">
+  <div class="stepper-container">
+    <h2 class="titulo">Ingreso de Postulante</h2>
+    <mat-horizontal-stepper class="postulante-stepper" [linear]="false">
+      <mat-step *ngFor="let step of steps; index as i" [label]="step.label">
+        <div class="step-wrapper">
+          <ng-container [ngSwitch]="step.key">
+            <app-aspectos-generales-step
+              *ngSwitchCase="'generales'"
+              [form]="generalForm"
+            ></app-aspectos-generales-step>
+            <app-salud-step
+              *ngSwitchCase="'salud'"
+              [form]="saludForm"
+            ></app-salud-step>
+            <app-datos-familiares-step
+              *ngSwitchCase="'familiares'"
+              [form]="familiaresForm"
+            ></app-datos-familiares-step>
+            <app-datos-academicos-step
+              *ngSwitchCase="'academicos'"
+              [form]="academicosForm"
+            ></app-datos-academicos-step>
+            <app-referencias-laborales-step
+              *ngSwitchCase="'laborales'"
+              [form]="laboralesForm"
+            ></app-referencias-laborales-step>
+            <app-referencias-personales-step
+              *ngSwitchCase="'personales'"
+              [form]="personalesForm"
+            ></app-referencias-personales-step>
+            <app-aspectos-consumo-step
+              *ngSwitchCase="'consumo'"
+              [form]="consumoForm"
+            ></app-aspectos-consumo-step>
+            <app-datos-economicos-step
+              *ngSwitchCase="'economicos'"
+              [form]="economicosForm"
+            ></app-datos-economicos-step>
 
-    <form [formGroup]="postulanteForm" (ngSubmit)="guardar()" class="grid grid-cols-2 gap-4">
-      <div>
-        <label class="block text-sm font-semibold mb-1">Nombre completo</label>
-        <input type="text" formControlName="nombre" class="w-full border rounded p-2" />
-      </div>
+            <ng-container *ngSwitchDefault>
+              <ng-container *ngComponentOutlet="step.component"></ng-container>
+            </ng-container>
+          </ng-container>
 
-      <div>
-        <label class="block text-sm font-semibold mb-1">Correo electrónico</label>
-        <input type="email" formControlName="correo" class="w-full border rounded p-2" />
-      </div>
-
-      <div>
-        <label class="block text-sm font-semibold mb-1">Teléfono</label>
-        <input type="tel" formControlName="telefono" class="w-full border rounded p-2" />
-      </div>
-
-      <div>
-        <label class="block text-sm font-semibold mb-1">Vacante aplicada</label>
-        <select formControlName="vacante" class="w-full border rounded p-2">
-          <option value="">Seleccione...</option>
-          <option *ngFor="let v of vacantes" [value]="v">{{ v }}</option>
-        </select>
-      </div>
-
-      <div>
-        <label class="block text-sm font-semibold mb-1">Nivel educativo</label>
-        <select formControlName="educacion" class="w-full border rounded p-2">
-          <option value="">Seleccione...</option>
-          <option *ngFor="let e of educacion" [value]="e">{{ e }}</option>
-        </select>
-      </div>
-
-      <div>
-        <label class="block text-sm font-semibold mb-1">Experiencia</label>
-        <input type="text" formControlName="experiencia" class="w-full border rounded p-2" />
-      </div>
-
-      <div class="col-span-2 text-right mt-4">
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-          Guardar Postulante
-        </button>
-      </div>
-    </form>
+          <div class="stepper-actions">
+            <button
+              mat-stroked-button
+              class="btn-secondary"
+              matStepperPrevious
+              *ngIf="i > 0"
+            >
+              Anterior
+            </button>
+            <button
+              mat-flat-button
+              class="btn-primary"
+              matStepperNext
+              *ngIf="i < steps.length - 1"
+            >
+              Siguiente
+            </button>
+            <button
+              mat-flat-button
+              class="btn-finalizar"
+              *ngIf="i === steps.length - 1"
+              (click)="onSubmit()"
+            >
+              Registrar
+            </button>
+          </div>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
   </div>
 </div>

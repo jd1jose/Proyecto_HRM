@@ -1,0 +1,128 @@
+<div class="step-content">
+  <h3>Referencias Laborales</h3>
+
+  <form [formGroup]="form" class="laboral-grid">
+    <section class="grupo">
+      <div class="row">
+        <div class="field">
+          <label for="empresa-nombre">Nombre de la empresa</label>
+          <input
+            id="empresa-nombre"
+            type="text"
+            formControlName="empresaNombre"
+            placeholder="Ej. Industrias XYZ, S.A."
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field half">
+          <label for="empresa-direccion">Dirección de la empresa</label>
+          <input
+            id="empresa-direccion"
+            type="text"
+            formControlName="empresaDireccion"
+            placeholder="Ej. 5ta avenida 10-15 zona 10"
+          />
+        </div>
+        <div class="field half">
+          <label for="empresa-telefono">Teléfono de la empresa</label>
+          <input
+            id="empresa-telefono"
+            type="tel"
+            formControlName="empresaTelefono"
+            placeholder="Ej. 5555-1234"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field half">
+          <label for="puesto-salario">Puesto desempeñado</label>
+          <input
+            id="puesto-salario"
+            type="text"
+            formControlName="puestoDesempenado"
+            placeholder="Ej. Analista de Nómina"
+          />
+        </div>
+        <div class="field half">
+          <label for="salario-devengado">Salario devengado</label>
+          <input
+            id="salario-devengado"
+            type="text"
+            formControlName="salarioDevengado"
+            placeholder="Ej. Q 6,500 mensuales"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field half">
+          <label for="fecha-ingreso">Fecha en que ingresó</label>
+          <input id="fecha-ingreso" type="date" formControlName="fechaIngreso" />
+        </div>
+        <div class="field half">
+          <label for="fecha-salida">Fecha en que salió</label>
+          <input id="fecha-salida" type="date" formControlName="fechaSalida" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field textarea-field">
+          <label for="funciones">¿Cuáles eran sus funciones principales?</label>
+          <textarea
+            id="funciones"
+            rows="3"
+            formControlName="funciones"
+            placeholder="Describa las principales responsabilidades"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field half">
+          <label for="jefe-nombre">Nombre del jefe inmediato</label>
+          <input
+            id="jefe-nombre"
+            type="text"
+            formControlName="jefeNombre"
+            placeholder="Ej. María Rodríguez"
+          />
+        </div>
+        <div class="field half">
+          <label for="jefe-puesto">Puesto del jefe inmediato</label>
+          <input
+            id="jefe-puesto"
+            type="text"
+            formControlName="jefePuesto"
+            placeholder="Ej. Gerente de Recursos Humanos"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field textarea-field">
+          <label for="motivo-retiro">¿Por qué motivo se retiró de la empresa?</label>
+          <textarea
+            id="motivo-retiro"
+            rows="3"
+            formControlName="motivoRetiro"
+            placeholder="Explique el motivo de retiro"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="referencia-consentida">¿Se puede pedir referencias?</label>
+          <select id="referencia-consentida" formControlName="sePuedeReferenciar">
+            <option value="">Seleccione...</option>
+            <option [ngValue]="true">Sí</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </div>
+      </div>
+    </section>
+  </form>
+</div>

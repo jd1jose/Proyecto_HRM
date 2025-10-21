@@ -1,0 +1,203 @@
+<div class="step-content">
+  <h3>Aspectos Generales</h3>
+
+  <form [formGroup]="form" class="general-grid">
+    <div class="field">
+      <label for="nombre-completo">
+        Nombre completo (nombres, apellidos y apellido de casada si aplica)
+      </label>
+      <input
+        id="nombre-completo"
+        type="text"
+        formControlName="nombreCompleto"
+        placeholder="Ej. Maria Fernanda Lopez de Gonzalez"
+      />
+    </div>
+
+    <div class="field">
+      <label for="puesto-solicita">Puesto que solicita</label>
+      <input
+        id="puesto-solicita"
+        type="text"
+        formControlName="puestoSolicita"
+        placeholder="Ej. Analista de RRHH"
+      />
+    </div>
+
+    <div class="field">
+      <label for="pretension-salarial">Cuál es su pretensión salarial</label>
+      <input
+        id="pretension-salarial"
+        type="text"
+        formControlName="pretensionSalarial"
+        placeholder="Ej. Q 6,000 mensuales"
+      />
+    </div>
+
+    <div class="field">
+      <label for="profesion">Profesión</label>
+      <input
+        id="profesion"
+        type="text"
+        formControlName="profesion"
+        placeholder="Ej. Licenciatura en Administración"
+      />
+    </div>
+
+    <div class="field">
+      <label for="lugar-nacimiento">Lugar de nacimiento</label>
+      <input
+        id="lugar-nacimiento"
+        type="text"
+        formControlName="lugarNacimiento"
+        placeholder="Ej. Ciudad de Guatemala"
+      />
+    </div>
+
+    <div class="field">
+      <label for="fecha-nacimiento">Fecha de nacimiento</label>
+      <input id="fecha-nacimiento" type="date" formControlName="fechaNacimiento" />
+    </div>
+
+    <div class="field">
+      <label for="edad-actual">Edad actual</label>
+      <input
+        id="edad-actual"
+        type="number"
+        min="0"
+        formControlName="edadActual"
+        placeholder="Ej. 29"
+      />
+    </div>
+
+    <div class="field">
+      <label for="estatura">Estatura</label>
+      <input id="estatura" type="text" formControlName="estatura" placeholder="Ej. 1.70 m" />
+    </div>
+
+    <div class="field">
+      <label for="grupo-sanguineo">Grupo sanguíneo</label>
+      <select id="grupo-sanguineo" formControlName="grupoSanguineo">
+        <option value="">Seleccione...</option>
+        <option value="O+">O+</option>
+        <option value="O-">O-</option>
+        <option value="A+">A+</option>
+        <option value="A-">A-</option>
+        <option value="B+">B+</option>
+        <option value="B-">B-</option>
+        <option value="AB+">AB+</option>
+        <option value="AB-">AB-</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="direccion">
+        Dirección completa (colonia, zona y municipio)
+      </label>
+      <input
+        id="direccion"
+        type="text"
+        formControlName="direccionCompleta"
+        placeholder="Ej. Colonia Aurora, Zona 13, Ciudad de Guatemala"
+      />
+    </div>
+
+    <div class="field">
+      <label for="telefono-contacto">Número telefónico para contactarlo</label>
+      <input
+        id="telefono-contacto"
+        type="tel"
+        formControlName="telefonoContacto"
+        placeholder="Ej. 5555-5555"
+      />
+    </div>
+
+    <div class="field full">
+      <label for="contacto-emergencia">
+        En caso de emergencia contactar a (incluya teléfonos, nombre, apellido y parentesco)
+      </label>
+      <textarea
+        id="contacto-emergencia"
+        rows="3"
+        formControlName="contactoEmergencia"
+        placeholder="Ej. Laura Gómez, hermana, 5555-1111; Carlos Gómez, padre, 5555-2222"
+      ></textarea>
+    </div>
+
+    <div class="field">
+      <label for="estado-civil">Estado civil</label>
+      <select id="estado-civil" formControlName="estadoCivil">
+        <option value="">Seleccione...</option>
+        <option value="soltero">Soltero(a)</option>
+        <option value="casado">Casado(a)</option>
+        <option value="divorciado">Divorciado(a)</option>
+        <option value="viudo">Viudo(a)</option>
+        <option value="union-lib">Unión de hecho</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="vive-con">Actualmente vive con</label>
+      <input id="vive-con" type="text" formControlName="viveCon" placeholder="Ej. Esposo e hijos" />
+    </div>
+
+    <div class="field">
+      <label for="dependientes">Personas que dependen de usted</label>
+      <input
+        id="dependientes"
+        type="text"
+        formControlName="dependientes"
+        placeholder="Ej. 2 hijos menores"
+      />
+    </div>
+
+    <div class="field">
+      <label for="dpi">Número de identificación personal (DPI)</label>
+      <input id="dpi" type="text" formControlName="dpi" placeholder="Ej. 1234 56789 0101" />
+    </div>
+
+    <div class="field">
+      <label for="nit">Número de NIT</label>
+      <input id="nit" type="text" formControlName="nit" placeholder="Ej. 1234567-8" />
+    </div>
+
+    <div class="field">
+      <label for="igss">Número de carnet de IGSS</label>
+      <input id="igss" type="text" formControlName="igss" placeholder="Ej. 1234567890" />
+    </div>
+
+    <div class="field">
+      <label for="irtra">Número de carnet de IRTRA</label>
+      <input id="irtra" type="text" formControlName="irtra" placeholder="Ej. 0987654321" />
+    </div>
+
+    <div class="field">
+      <label for="licencia">Número de licencia y tipo</label>
+      <input id="licencia" type="text" formControlName="licenciaTipo" placeholder="Ej. 123456 - Tipo C" />
+    </div>
+
+    <div class="field">
+      <label for="documento-trabajo">
+        Si es extranjero indique el documento que le permite trabajar en el país
+      </label>
+      <input
+        id="documento-trabajo"
+        type="text"
+        formControlName="documentoTrabajo"
+        placeholder="Ej. Permiso de trabajo temporal"
+      />
+    </div>
+
+    <div class="field full">
+      <label for="medio-transporte">
+        ¿Cuenta con medio de transporte? (si la respuesta es positiva indique cuál)
+      </label>
+      <textarea
+        id="medio-transporte"
+        rows="2"
+        formControlName="medioTransporte"
+        placeholder="Ej. Vehículo propio tipo sedán, motocicleta, transporte público, etc."
+      ></textarea>
+    </div>
+  </form>
+</div>

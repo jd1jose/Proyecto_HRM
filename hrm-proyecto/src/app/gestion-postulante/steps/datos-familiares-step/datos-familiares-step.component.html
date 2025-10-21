@@ -1,0 +1,140 @@
+<div class="step-content">
+  <h3>Datos Familiares</h3>
+
+  <form [formGroup]="form" class="familia-grid">
+    <section class="grupo full">
+      <header>Padre</header>
+      <div class="row">
+        <div class="field">
+          <label for="padre-nombre">Nombre completo</label>
+          <input id="padre-nombre" type="text" formControlName="padreNombre" placeholder="Ej. Carlos Gomez" />
+        </div>
+        <div class="field">
+          <label for="padre-edad">Edad</label>
+          <input id="padre-edad" type="number" min="0" formControlName="padreEdad" placeholder="Ej. 60" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="padre-vive">Aun vive</label>
+          <select id="padre-vive" formControlName="padreVive">
+            <option value="">Seleccione...</option>
+            <option [ngValue]="true">Si</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="padre-conviven">Vive con usted</label>
+          <select id="padre-conviven" formControlName="padreViveConUsted">
+            <option value="">Seleccione...</option>
+            <option [ngValue]="true">Si</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="grupo full">
+      <header>Madre</header>
+      <div class="row">
+        <div class="field">
+          <label for="madre-nombre">Nombre completo</label>
+          <input id="madre-nombre" type="text" formControlName="madreNombre" placeholder="Ej. Laura Perez" />
+        </div>
+        <div class="field">
+          <label for="madre-edad">Edad</label>
+          <input id="madre-edad" type="number" min="0" formControlName="madreEdad" placeholder="Ej. 58" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="madre-vive">Aun vive</label>
+          <select id="madre-vive" formControlName="madreVive">
+            <option value="">Seleccione...</option>
+            <option [ngValue]="true">Si</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="madre-conviven">Vive con usted</label>
+          <select id="madre-conviven" formControlName="madreViveConUsted">
+            <option value="">Seleccione...</option>
+            <option [ngValue]="true">Si</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="grupo full">
+      <header>Conyuge o pareja</header>
+      <div class="row">
+        <div class="field">
+          <label for="conyuge-nombre">Nombre completo</label>
+          <input id="conyuge-nombre" type="text" formControlName="conyugeNombre" placeholder="Ej. Andrea Lopez" />
+        </div>
+        <div class="field">
+          <label for="conyuge-edad">Edad</label>
+          <input id="conyuge-edad" type="number" min="0" formControlName="conyugeEdad" placeholder="Ej. 35" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="conyuge-vive">Aun vive</label>
+          <select id="conyuge-vive" formControlName="conyugeVive">
+            <option value="">Seleccione...</option>
+            <option [ngValue]="true">Si</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="conyuge-conviven">Vive con usted</label>
+          <select id="conyuge-conviven" formControlName="conyugeViveConUsted">
+            <option value="">Seleccione...</option>
+            <option [ngValue]="true">Si</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="conyuge-ocupacion">A que se dedica</label>
+          <input
+            id="conyuge-ocupacion"
+            type="text"
+            formControlName="conyugeOcupacion"
+            placeholder="Ej. Docente universitaria"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="grupo full">
+      <header>Hijos</header>
+      <div class="row">
+        <div class="field">
+          <label for="hijos-nombre">Nombre</label>
+          <input id="hijos-nombre" type="text" formControlName="hijosNombre" placeholder="Ej. Mateo Gomez" />
+        </div>
+        <div class="field">
+          <label for="hijos-edad">Edad</label>
+          <input id="hijos-edad" type="number" min="0" formControlName="hijosEdad" placeholder="Ej. 5" />
+        </div>
+      </div>
+    </section>
+
+    <section class="grupo full">
+      <header>Hermanos</header>
+      <div class="row">
+        <div class="field">
+          <label for="hermanos-nombre">Nombre</label>
+          <input id="hermanos-nombre" type="text" formControlName="hermanosNombre" placeholder="Ej. Luis Gomez" />
+        </div>
+        <div class="field">
+          <label for="hermanos-edad">Edad</label>
+          <input id="hermanos-edad" type="number" min="0" formControlName="hermanosEdad" placeholder="Ej. 30" />
+        </div>
+      </div>
+    </section>
+  </form>
+</div>

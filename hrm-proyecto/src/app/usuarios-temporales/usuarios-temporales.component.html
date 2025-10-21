@@ -47,7 +47,7 @@
       </div>
       <div class="mt-4 text-right">
         <button type="submit" class="btn-primary" [disabled]="form.invalid">Crear</button>
-        <button type="button" class="btn-secondary ml-2" (click)="purgar()">Purgar expirados</button>
+        <button type="button" class="btn-secondary ml-2" (click)="purgar()">Eliminar expirados</button>
       </div>
     </form>
 
@@ -86,7 +86,7 @@
                 </span>
               </td>
               <td class="text-right">
-                <button class="btn-secondary mr-2" (click)="extender(u.id, 7)">+7 dÃ­as</button>
+                <button class="btn-secondary mr-2" (click)="extender(u.id, 7)">+7 días</button>
                 <button class="btn-danger" (click)="eliminar(u.id)">Eliminar</button>
               </td>
             </tr>

@@ -1,0 +1,39 @@
+<div class="step-content">
+  <h3>Referencias Personales</h3>
+
+  <form [formGroup]="form" class="personales-grid">
+    <section class="grupo">
+      <div class="row">
+        <div class="field half">
+          <label for="referencia-nombre">Nombre</label>
+          <input
+            id="referencia-nombre"
+            type="text"
+            formControlName="nombre"
+            placeholder="Ej. Carlos Pérez"
+          />
+        </div>
+        <div class="field half">
+          <label for="referencia-telefono">Teléfono</label>
+          <input
+            id="referencia-telefono"
+            type="tel"
+            formControlName="telefono"
+            placeholder="Ej. 5555-7890"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="referencia-tiempo">Tiempo de conocerlo</label>
+          <input
+            id="referencia-tiempo"
+            type="text"
+            formControlName="tiempoConocerlo"
+            placeholder="Ej. 5 años"
+          />
+        </div>
+      </div>
+    </section>
+  </form>
+</div>
