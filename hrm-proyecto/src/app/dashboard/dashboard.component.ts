@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import {
@@ -22,6 +22,8 @@ export class DashboardComponent implements OnInit {
   accionMensaje = '';
   accionError = '';
   accionEnProgresoId: number | null = null;
+  menuAccionesAbiertoId: number | null = null;
+  menuAccionesEstilos: { top: string; left: string } = { top: '0px', left: '0px' };
 
   modalAbierto = false;
   modalCargando = false;
@@ -55,10 +57,12 @@ export class DashboardComponent implements OnInit {
   }
 
   irAAsignacion(vacante: Vacante): void {
+    this.cerrarMenuAcciones();
     this.router.navigate(['/vacantes', vacante.id, 'asignaciones']);
   }
 
-  cerrarVacante(vacante: Vacante): void {
+  cerrarAsignacion(vacante: Vacante): void {
+    this.cerrarMenuAcciones();
     if (this.accionEnProgresoId !== null) {
       return;
     }
@@ -68,7 +72,7 @@ export class DashboardComponent implements OnInit {
     this.vacantesService.cerrarVacante(vacante.id).subscribe({
       next: (vacanteActualizada) => {
         this.reemplazarVacante(vacanteActualizada);
-        this.accionMensaje = 'La vacante se actualizo a confirmar postulantes.';
+        this.accionMensaje = 'La asignacion se cerro y la vacante paso a confirmar postulantes.';
       },
       error: (err) => {
         this.accionError =
@@ -82,6 +86,7 @@ export class DashboardComponent implements OnInit {
   }
 
   abrirModalInforme(vacante: Vacante): void {
+    this.cerrarMenuAcciones();
     if (this.accionEnProgresoId !== null) {
       return;
     }
@@ -198,5 +203,64 @@ export class DashboardComponent implements OnInit {
 
   postulanteTrackFn(_: number, postulante: VacantePostulante): number {
     return postulante.id;
+  }
+
+  toggleMenuAcciones(event: MouseEvent, vacanteId: number): void {
+    event.stopPropagation();
+    if (this.menuAccionesAbiertoId === vacanteId) {
+      this.cerrarMenuAcciones();
+      return;
+    }
+    const boton = event.currentTarget as HTMLElement;
+    const rect = boton.getBoundingClientRect();
+    this.menuAccionesEstilos = {
+      top: `${rect.bottom + window.scrollY + 8}px`,
+      left: `${rect.right + window.scrollX}px`
+    };
+    this.menuAccionesAbiertoId = vacanteId;
+  }
+
+  cerrarVacante(vacante: Vacante): void {
+    this.cerrarMenuAcciones();
+    if (this.accionEnProgresoId !== null) {
+      return;
+    }
+    this.accionMensaje = '';
+    this.accionError = '';
+    this.accionEnProgresoId = vacante.id;
+    this.vacantesService.actualizarEstadoVacante(vacante.id, 'cerrada').subscribe({
+      next: (vacanteActualizada) => {
+        this.reemplazarVacante(vacanteActualizada);
+        this.accionMensaje = 'La vacante se cerro definitivamente.';
+      },
+      error: (err) => {
+        this.accionError =
+          err?.error?.message || 'No se pudo cerrar la vacante. Intente nuevamente.';
+        this.accionEnProgresoId = null;
+      },
+      complete: () => {
+        this.accionEnProgresoId = null;
+      }
+    });
+  }
+
+  cerrarMenuAcciones(): void {
+    this.menuAccionesAbiertoId = null;
+    this.menuAccionesEstilos = { top: '0px', left: '0px' };
+  }
+
+  @HostListener('document:click')
+  onDocumentClick(): void {
+    this.cerrarMenuAcciones();
+  }
+
+  @HostListener('window:scroll')
+  onWindowScroll(): void {
+    this.cerrarMenuAcciones();
+  }
+
+  @HostListener('window:resize')
+  onWindowResize(): void {
+    this.cerrarMenuAcciones();
   }
 }

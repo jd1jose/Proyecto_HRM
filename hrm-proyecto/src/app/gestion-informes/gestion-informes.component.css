@@ -1,0 +1,227 @@
+.informes-layout {
+  min-height: 100vh;
+  padding: 3rem 2.25rem;
+  background: linear-gradient(
+    135deg,
+    rgba(109, 190, 69, 0.12),
+    rgba(244, 119, 33, 0.12)
+  );
+}
+
+.stepper-container {
+  max-width: 1360px;
+  width: min(96%, 1360px);
+  margin: 0 auto;
+  background-color: var(--color-blanco);
+  border-radius: 24px;
+  box-shadow: 0 28px 60px rgba(109, 190, 69, 0.18);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(109, 190, 69, 0.12);
+  padding: 3rem 3.75rem 3.25rem;
+}
+
+.titulo {
+  color: var(--color-verde);
+  font-size: 2.1rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.informes-stepper {
+  background-color: transparent;
+  padding-bottom: 0.75rem;
+}
+
+.informes-stepper .mat-horizontal-stepper-header-container {
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+.informes-stepper
+  .mat-horizontal-stepper-header-container
+  .mat-step-header {
+  flex: 1 1 180px;
+}
+
+.informes-stepper .mat-step-header {
+  border-radius: 10px;
+  margin: 0.4rem 0;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  padding: 0.55rem 0.65rem;
+}
+
+.informes-stepper .mat-step-header:hover {
+  background-color: rgba(244, 119, 33, 0.08);
+}
+
+.informes-stepper .mat-step-header.mat-active {
+  background-color: rgba(244, 119, 33, 0.15);
+  box-shadow: 0 0 0 2px rgba(244, 119, 33, 0.2);
+}
+
+.informes-stepper .mat-step-header {
+  position: relative;
+}
+
+.informes-stepper .mat-step-header::before,
+.informes-stepper .mat-step-header::after {
+  content: none !important;
+  border-top: none !important;
+  background-color: transparent !important;
+  width: 0 !important;
+  height: 0 !important;
+  position: static !important;
+}
+
+.informes-stepper .mat-step-header .mat-step-icon {
+  background-color: var(--color-verde);
+}
+
+.informes-stepper .mat-step-header .mat-step-icon-state-edit {
+  background-color: var(--color-naranja);
+  color: var(--color-blanco);
+  box-shadow: 0 0 0 2px rgba(244, 119, 33, 0.2);
+}
+
+.informes-stepper
+  .mat-step-header.mat-active
+  .mat-step-icon-state-edit {
+  background-color: var(--color-naranja);
+  box-shadow: 0 0 0 3px rgba(244, 119, 33, 0.25);
+}
+
+.informes-stepper .mat-step-header .mat-step-label {
+  font-weight: 500;
+  color: var(--color-gris);
+  white-space: normal;
+  line-height: 1.25;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.informes-stepper .mat-step-header.mat-active .mat-step-label {
+  color: var(--color-verde);
+}
+
+.informes-stepper .mat-stepper-horizontal-line {
+  display: none !important;
+}
+
+.step-card {
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 18px;
+  padding: 0;
+}
+
+.step-card .step-wrapper {
+  background-color: var(--color-blanco);
+  border-radius: 20px;
+  padding: 2.85rem;
+  box-shadow: 0 12px 24px rgba(244, 119, 33, 0.08);
+  border: 1px solid rgba(109, 190, 69, 0.2);
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'Inter', sans-serif;
+}
+
+.stepper-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.25rem 0;
+  gap: 1rem;
+  border-radius: 12px;
+  margin-top: 1.75rem;
+}
+
+.stepper-actions--single {
+  justify-content: flex-end;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-finalizar {
+  padding: 0.6rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 140px;
+}
+
+.btn-primary {
+  background-color: var(--color-naranja);
+  color: var(--color-blanco);
+  box-shadow: 0 12px 24px rgba(244, 119, 33, 0.25);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  background-color: rgba(109, 190, 69, 0.16);
+  color: var(--color-verde);
+  border: 1px solid rgba(109, 190, 69, 0.4);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(109, 190, 69, 0.2);
+}
+
+.btn-secondary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-finalizar {
+  background-color: var(--color-verde);
+  color: var(--color-blanco);
+  box-shadow: 0 12px 24px rgba(109, 190, 69, 0.25);
+}
+
+.btn-finalizar:hover {
+  filter: brightness(0.95);
+}
+
+@media (max-width: 768px) {
+  .step-card {
+    border-radius: 12px;
+  }
+
+  .stepper-container {
+    border-radius: 0;
+    padding: 1.6rem 1.25rem 1.75rem;
+    width: 100%;
+  }
+
+  .informes-stepper .mat-step-header {
+    margin: 0.1rem 0;
+    padding: 0.6rem 0.4rem;
+  }
+
+  .step-card .step-wrapper {
+    padding: 1.65rem 1.35rem;
+    min-height: 380px;
+  }
+
+  .stepper-actions {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.25rem 0 0;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-finalizar {
+    width: 100%;
+  }
+}

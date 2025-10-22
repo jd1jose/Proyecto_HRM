@@ -3,16 +3,20 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import rateLimit from 'express-rate-limit';
+import path from 'path';
 import { errorHandler } from './middlewares/errorHandler.js';
 
 import authRoutes from './routes/auth.routes.js';
 import usersRoutes from './routes/users.routes.js';
 import vacanciesRoutes from './routes/vacancies.routes.js';
 import postulantesRoutes from './routes/postulantes.routes.js';
+import informesRoutes from './routes/informes.routes.js';
 
 const app = express();
-app.use(express.json());
+app.use(express.json({ limit: '15mb' }));
+app.use(express.urlencoded({ extended: true, limit: '15mb' }));
 app.use(cors({ origin: 'http://localhost:4200', credentials: true }));
+app.use('/files', express.static(path.resolve('expedientes')));
 
 // Evitar cache en endpoints de API y desactivar ETag (previene 304)
 app.set('etag', false);
@@ -33,6 +37,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/vacancies', vacanciesRoutes);
 app.use('/api/postulantes', postulantesRoutes);
+app.use('/api/informes', informesRoutes);
 
 // Manejo de 404
 app.use((_req, res) => res.status(404).json({ message: 'Ruta no encontrada' }));

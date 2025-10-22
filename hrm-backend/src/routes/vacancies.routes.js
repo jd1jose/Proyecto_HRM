@@ -2,6 +2,7 @@
 import { requireAuth } from '../middlewares/auth.js';
 import {
   listVacancies,
+  listPostulantesInforme,
   getVacancy,
   createVacancy,
   updateVacancy,
@@ -15,6 +16,11 @@ const router = Router();
 
 // lectura publica opcional:
 router.get('/', listVacancies);
+router.get(
+  '/postulantes/informe',
+  requireAuth(['admin', 'reclutador']),
+  listPostulantesInforme
+);
 router.get('/:id', getVacancy);
 
 // administracion protegida:

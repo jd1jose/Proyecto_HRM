@@ -1,0 +1,100 @@
+import { CommonModule } from '@angular/common';
+import { Component, Inject, OnDestroy } from '@angular/core';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
+export interface InformePdfDialogData {
+  blob: Blob;
+  filename: string;
+}
+
+@Component({
+  selector: 'app-informe-pdf-preview-dialog',
+  standalone: true,
+  imports: [CommonModule, MatDialogModule, MatButtonModule],
+  template: `
+    <div class="dialog-container">
+      <div class="dialog-header">
+        <h2>Previsualización del informe</h2>
+      </div>
+      <div class="dialog-content" *ngIf="pdfUrl; else loading">
+        <iframe [src]="pdfUrl" frameborder="0"></iframe>
+      </div>
+      <ng-template #loading>
+        <div class="loading">Generando PDF...</div>
+      </ng-template>
+      <div class="dialog-actions">
+        <button mat-stroked-button color="primary" (click)="descargar()">Guardar</button>
+        <button mat-button (click)="cerrar()">Cancelar</button>
+      </div>
+    </div>
+  `,
+  styles: [
+    `
+      .dialog-container {
+        display: flex;
+        flex-direction: column;
+        width: min(900px, 90vw);
+        height: min(700px, 90vh);
+      }
+      .dialog-header {
+        padding: 12px 0;
+      }
+      .dialog-content {
+        flex: 1;
+        overflow: hidden;
+      }
+      .dialog-content iframe {
+        width: 100%;
+        height: 100%;
+      }
+      .dialog-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+        padding-top: 12px;
+      }
+      .loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        font-size: 16px;
+      }
+    `
+  ]
+})
+export class InformePdfPreviewDialogComponent implements OnDestroy {
+  pdfUrl: SafeResourceUrl | null = null;
+  private objectUrl: string | null = null;
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) private readonly data: InformePdfDialogData,
+    private readonly dialogRef: MatDialogRef<InformePdfPreviewDialogComponent>,
+    private readonly sanitizer: DomSanitizer
+  ) {
+    this.objectUrl = URL.createObjectURL(data.blob);
+    this.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.objectUrl);
+  }
+
+  descargar(): void {
+    if (!this.objectUrl) {
+      return;
+    }
+    const link = document.createElement('a');
+    link.href = this.objectUrl;
+    link.download = this.data.filename;
+    link.click();
+  }
+
+  cerrar(): void {
+    this.dialogRef.close();
+  }
+
+  ngOnDestroy(): void {
+    if (this.objectUrl) {
+      URL.revokeObjectURL(this.objectUrl);
+    }
+  }
+}

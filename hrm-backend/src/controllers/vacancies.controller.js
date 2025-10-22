@@ -94,6 +94,59 @@ export const listVacancies = async (req, res, next) => {
   }
 };
 
+export const listPostulantesInforme = async (_req, res, next) => {
+  try {
+    const asignaciones = await VacancyPostulante.findAll({
+      where: { estado: 'generar_informe' },
+      include: [
+        {
+          model: Postulante,
+          as: 'postulante',
+          attributes: ['id', 'nombreCompleto', 'puestoSolicita', 'profesion', 'estado']
+        },
+        {
+          model: Vacancy,
+          as: 'vacancy',
+          attributes: ['id', 'puesto', 'categoria', 'ciudad', 'estado']
+        }
+      ],
+      order: [['updatedAt', 'DESC']]
+    });
+
+    const data = asignaciones.map((item) => {
+      const plain = item.get({ plain: true });
+      return {
+        id: plain.id,
+        estadoAsignacion: plain.estado,
+        postulanteId: plain.postulanteId,
+        vacancyId: plain.vacancyId,
+        postulante: plain.postulante
+          ? {
+              id: plain.postulante.id,
+              nombreCompleto: plain.postulante.nombreCompleto,
+              puestoSolicita: plain.postulante.puestoSolicita,
+              profesion: plain.postulante.profesion,
+              estado: plain.postulante.estado
+            }
+          : null,
+        vacante: plain.vacancy
+          ? {
+              id: plain.vacancy.id,
+              puesto: plain.vacancy.puesto,
+              categoria: plain.vacancy.categoria,
+              ciudad: plain.vacancy.ciudad,
+              estado: plain.vacancy.estado
+            }
+          : null
+      };
+    });
+
+    return ok(res, data);
+  } catch (err) {
+    next(err);
+  }
+};
+
 export const getVacancy = async (req, res, next) => {
   try {
     const vac = await Vacancy.findByPk(req.params.id, {
@@ -323,11 +376,19 @@ export const markPostulantesForRiskReport = async (req, res, next) => {
           { estado: 'generar_informe' },
           { where: { id: seleccionados }, transaction }
         );
+        await VacancyPostulante.update(
+          { estado: 'generar_informe' },
+          { where: { vacancyId, postulanteId: { [Op.in]: seleccionados } }, transaction }
+        );
       }
       if (otros.length > 0) {
         await Postulante.update(
           { estado: 'seleccionado' },
           { where: { id: otros }, transaction }
+        );
+        await VacancyPostulante.update(
+          { estado: 'seleccionado' },
+          { where: { vacancyId, postulanteId: { [Op.in]: otros } }, transaction }
         );
       }
     });

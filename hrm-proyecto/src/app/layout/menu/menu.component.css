@@ -9,7 +9,23 @@
 }
 
 /* Smooth transitions for width and paddings */
-:host nav { transition: width 0.2s ease; height: 100%; }
+:host nav {
+  transition: width 0.2s ease;
+  height: 100%;
+}
+
+:host nav > ul,
+:host nav > div {
+  width: 100%;
+}
+
+:host nav.items-stretch .menu-item {
+  justify-content: flex-start;
+}
+
+:host nav.items-center .menu-item {
+  justify-content: center;
+}
 
 /* Optional: prevent text selection on toggle */
 button { user-select: none; }

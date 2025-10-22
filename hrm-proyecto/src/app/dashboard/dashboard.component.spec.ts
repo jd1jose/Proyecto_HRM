@@ -48,6 +48,25 @@ describe('DashboardComponent', () => {
         postulantes: []
       })
     ),
+    actualizarEstadoVacante: jasmine.createSpy('actualizarEstadoVacante').and.returnValue(
+      of({
+        id: 1,
+        puesto: '',
+        descripcion: '',
+        contacto: '',
+        categoria: '',
+        tipoContrato: '',
+        experiencia: '',
+        educacion: '',
+        departamento: '',
+        ciudad: '',
+        cantidadVacantes: 1,
+        salario: 0,
+        tipoPago: '',
+        estado: 'cerrada',
+        postulantes: []
+      })
+    ),
     generarInformeRiesgo: jasmine.createSpy('generarInformeRiesgo').and.returnValue(
       of({
         id: 1,

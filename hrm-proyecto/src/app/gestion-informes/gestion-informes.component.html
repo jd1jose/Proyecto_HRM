@@ -1,103 +1,244 @@
-<div class="min-h-screen bg-gradient-to-r from-green-100 via-white to-orange-100">
-  <div class="container p-4">
-    <div class="card">
-      <h2 style="color: var(--color-verde);">Gestión de Informes</h2>
+<div class="informes-layout">
+  <div class="stepper-container">
+    <h2 class="titulo">Gestion de informes</h2>
 
-      <mat-horizontal-stepper [linear]="false" labelPosition="bottom" color="primary" #stepper>
+    <mat-horizontal-stepper
+      class="informes-stepper"
+      [linear]="false"
+      labelPosition="bottom"
+      color="primary"
+    >
+      <mat-step label="Informacion general">
+        <mat-card class="step-card">
+          <div class="step-wrapper">
+            <app-informacion-general
+              [form]="form.get('generales')!"
+            ></app-informacion-general>
 
-        <mat-step label="Información General">
-          <app-informacion-general [form]="form.get('generales')!"></app-informacion-general>
-          <div class="text-right mt-4">
-            <button mat-raised-button color="primary" (click)="stepper.next()">Siguiente</button>
+            <div class="stepper-actions stepper-actions--single">
+              <button mat-flat-button class="btn-primary" matStepperNext>
+                Siguiente
+              </button>
+            </div>
           </div>
-        </mat-step>
+        </mat-card>
+      </mat-step>
 
-        <mat-step label="Datos Familiares">
-          <app-datos-familiares [form]="form.get('familiares')!"></app-datos-familiares>
-          <div class="text-right mt-4">
-            <button mat-button  class="btn-anterior" (click)="stepper.previous()">Anterior</button>
-            <button mat-raised-button color="primary" (click)="stepper.next()">Siguiente</button>
-          </div>
-        </mat-step>
+      <mat-step label="Datos familiares">
+        <mat-card class="step-card">
+          <div class="step-wrapper">
+            <app-datos-familiares
+              [form]="form.get('familiares')!"
+            ></app-datos-familiares>
 
-        <mat-step label="Historial Académico">
-          <app-historial-academico [form]="form.get('academico')!"></app-historial-academico>
-          <div class="text-right mt-4">
-            <button mat-button class="btn-anterior" (click)="stepper.previous()">Anterior</button>
-            <button mat-raised-button color="primary" (click)="stepper.next()">Siguiente</button>
+            <div class="stepper-actions">
+              <button mat-stroked-button class="btn-secondary" matStepperPrevious>
+                Anterior
+              </button>
+              <button mat-flat-button class="btn-primary" matStepperNext>
+                Siguiente
+              </button>
+            </div>
           </div>
-        </mat-step>
+        </mat-card>
+      </mat-step>
 
-        <mat-step label="Información Laboral">
-          <app-informacion-laboral [form]="form.get('laboral')!"></app-informacion-laboral>
-          <div class="text-right mt-4">
-            <button mat-button class="btn-anterior" (click)="stepper.previous()">Anterior</button>
-            <button mat-raised-button color="primary" (click)="stepper.next()">Siguiente</button>
-          </div>
-        </mat-step>
+      <mat-step label="Historial academico">
+        <mat-card class="step-card">
+          <div class="step-wrapper">
+            <app-historial-academico
+              [form]="form.get('academico')!"
+            ></app-historial-academico>
 
-        <mat-step label="Económica y Financiera">
-          <app-informacion-economica [form]="form.get('economico')!"></app-informacion-economica>
-          <div class="text-right mt-4">
-            <button mat-button class="btn-anterior" (click)="stepper.previous()">Anterior</button>
-            <button mat-raised-button color="primary" (click)="stepper.next()">Siguiente</button>
+            <div class="stepper-actions">
+              <button mat-stroked-button class="btn-secondary" matStepperPrevious>
+                Anterior
+              </button>
+              <button mat-flat-button class="btn-primary" matStepperNext>
+                Siguiente
+              </button>
+            </div>
           </div>
-        </mat-step>
+        </mat-card>
+      </mat-step>
 
-        <mat-step label="Vivienda y Zona Residencial">
-          <app-vivienda [form]="form.get('propiedades')!"></app-vivienda>
-          <div class="text-right mt-4">
-            <button mat-button class="btn-anterior" (click)="stepper.previous()">Anterior</button>
-            <button mat-raised-button color="primary" (click)="stepper.next()">Siguiente</button>
-          </div>
-        </mat-step>
+      <mat-step label="Informacion laboral">
+        <mat-card class="step-card">
+          <div class="step-wrapper">
+            <app-informacion-laboral
+              [form]="form.get('laboral')!"
+            ></app-informacion-laboral>
 
-        <mat-step label="Salud">
-          <app-salud [form]="form.get('salud')!"></app-salud>
-          <div class="text-right mt-4">
-            <button mat-button class="btn-anterior" (click)="stepper.previous()">Anterior</button>
-            <button mat-raised-button color="primary" (click)="stepper.next()">Siguiente</button>
+            <div class="stepper-actions">
+              <button mat-stroked-button class="btn-secondary" matStepperPrevious>
+                Anterior
+              </button>
+              <button mat-flat-button class="btn-primary" matStepperNext>
+                Siguiente
+              </button>
+            </div>
           </div>
-        </mat-step>
+        </mat-card>
+      </mat-step>
 
-        <mat-step label="Antecedentes">
-          <app-antecedentes [form]="form.get('antecedentes')!"></app-antecedentes>
-          <div class="text-right mt-4">
-            <button mat-button class="btn-anterior" (click)="stepper.previous()">Anterior</button>
-            <button mat-raised-button color="primary" (click)="stepper.next()">Siguiente</button>
-          </div>
-        </mat-step>
+      <mat-step label="Economica y financiera">
+        <mat-card class="step-card">
+          <div class="step-wrapper">
+            <app-informacion-economica
+              [form]="form.get('economico')!"
+            ></app-informacion-economica>
 
-        <mat-step label="Redes Sociales">
-          <app-redes [form]="form.get('redes')!"></app-redes>
-          <div class="text-right mt-4">
-            <button mat-button class="btn-anterior" (click)="stepper.previous()">Anterior</button>
-            <button mat-raised-button color="primary" (click)="stepper.next()">Siguiente</button>
+            <div class="stepper-actions">
+              <button mat-stroked-button class="btn-secondary" matStepperPrevious>
+                Anterior
+              </button>
+              <button mat-flat-button class="btn-primary" matStepperNext>
+                Siguiente
+              </button>
+            </div>
           </div>
-        </mat-step>
+        </mat-card>
+      </mat-step>
 
-        <mat-step label="Referencias">
-          <app-referencia [form]="form.get('referencias')!"></app-referencia>
-          <div class="text-right mt-4">
-            <button mat-button class="btn-anterior" (click)="stepper.previous()">Anterior</button>
-            <button mat-raised-button color="primary" (click)="stepper.next()">Siguiente</button>
+      <mat-step label="Vivienda y zona residencial">
+        <mat-card class="step-card">
+          <div class="step-wrapper">
+            <app-vivienda [form]="form.get('propiedades')!"></app-vivienda>
+
+            <div class="stepper-actions">
+              <button mat-stroked-button class="btn-secondary" matStepperPrevious>
+                Anterior
+              </button>
+              <button mat-flat-button class="btn-primary" matStepperNext>
+                Siguiente
+              </button>
+            </div>
           </div>
-        </mat-step>
-        <mat-step label="Entrevita">
-          <app-entrevista [form]="form.get('entrevista')!"></app-entrevista>
-          <div class="text-right mt-4">
-            <button mat-button class="btn-anterior" (click)="stepper.previous()">Anterior</button>
-            <button mat-raised-button color="primary" (click)="stepper.next()">Siguiente</button>
+        </mat-card>
+      </mat-step>
+
+      <mat-step label="Salud">
+        <mat-card class="step-card">
+          <div class="step-wrapper">
+            <app-salud [form]="form.get('salud')!"></app-salud>
+
+            <div class="stepper-actions">
+              <button mat-stroked-button class="btn-secondary" matStepperPrevious>
+                Anterior
+              </button>
+              <button mat-flat-button class="btn-primary" matStepperNext>
+                Siguiente
+              </button>
+            </div>
           </div>
-        </mat-step>
-         <mat-step label="Anexos">
-          <app-fotografias [form]="form.get('anexos')!"></app-fotografias>
-          <div class="text-right mt-4">
-            <button mat-button class="btn-anterior" (click)="stepper.previous()">Anterior</button>
-            <button mat-raised-button color="primary" (click)="guardarInforme()">Guardar</button>
+        </mat-card>
+      </mat-step>
+
+      <mat-step label="Antecedentes">
+        <mat-card class="step-card">
+          <div class="step-wrapper">
+            <app-antecedentes
+              [form]="form.get('antecedentes')!"
+            ></app-antecedentes>
+
+            <div class="stepper-actions">
+              <button mat-stroked-button class="btn-secondary" matStepperPrevious>
+                Anterior
+              </button>
+              <button mat-flat-button class="btn-primary" matStepperNext>
+                Siguiente
+              </button>
+            </div>
           </div>
-        </mat-step>
-      </mat-horizontal-stepper>
-    </div>
+        </mat-card>
+      </mat-step>
+
+      <mat-step label="Redes sociales">
+        <mat-card class="step-card">
+          <div class="step-wrapper">
+            <app-redes [form]="form.get('redes')!"></app-redes>
+
+            <div class="stepper-actions">
+              <button mat-stroked-button class="btn-secondary" matStepperPrevious>
+                Anterior
+              </button>
+              <button mat-flat-button class="btn-primary" matStepperNext>
+                Siguiente
+              </button>
+            </div>
+          </div>
+        </mat-card>
+      </mat-step>
+
+      <mat-step label="Referencias">
+        <mat-card class="step-card">
+          <div class="step-wrapper">
+            <app-referencia
+              [form]="form.get('referencias')!"
+            ></app-referencia>
+
+            <div class="stepper-actions">
+              <button mat-stroked-button class="btn-secondary" matStepperPrevious>
+                Anterior
+              </button>
+              <button mat-flat-button class="btn-primary" matStepperNext>
+                Siguiente
+              </button>
+            </div>
+          </div>
+        </mat-card>
+      </mat-step>
+
+      <mat-step label="Entrevista">
+        <mat-card class="step-card">
+          <div class="step-wrapper">
+            <app-entrevista [form]="form.get('entrevista')!"></app-entrevista>
+
+            <div class="stepper-actions">
+              <button mat-stroked-button class="btn-secondary" matStepperPrevious>
+                Anterior
+              </button>
+              <button mat-flat-button class="btn-primary" matStepperNext>
+                Siguiente
+              </button>
+            </div>
+          </div>
+        </mat-card>
+      </mat-step>
+
+      <mat-step label="Anexos">
+        <mat-card class="step-card">
+          <div class="step-wrapper">
+            <app-fotografias [form]="form.get('anexos')!"></app-fotografias>
+
+            <div class="stepper-actions">
+              <button
+                mat-stroked-button
+                class="btn-secondary"
+                matStepperPrevious
+              >
+                Anterior
+              </button>
+              <button
+                mat-flat-button
+                class="btn-primary"
+                (click)="guardarInforme()"
+                [disabled]="isSaving || isGenerating"
+              >
+                {{ isSaving ? 'Guardando...' : 'Guardar' }}
+              </button>
+              <button
+                mat-flat-button
+                class="btn-finalizar"
+                (click)="generarInforme()"
+                [disabled]="isSaving || isGenerating"
+              >
+                {{ isGenerating ? 'Generando...' : 'Generar informe' }}
+              </button>
+            </div>
+          </div>
+        </mat-card>
+      </mat-step>
+    </mat-horizontal-stepper>
   </div>
 </div>

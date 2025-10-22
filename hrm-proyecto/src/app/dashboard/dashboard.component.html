@@ -69,24 +69,54 @@
                   </span>
                 </td>
                 <td class="px-4 py-3 text-right text-sm">
-                  <div class="flex justify-end gap-2 flex-wrap">
-                    <button class="btn-primary" (click)="irAAsignacion(vacante)">
-                      Agregar postulantes
-                    </button>
+                  <div class="relative inline-block text-left">
                     <button
-                      class="btn-secondary"
-                      (click)="cerrarVacante(vacante)"
-                      [disabled]="accionEnProgresoId === vacante.id"
+                      type="button"
+                      class="btn-primary acciones-toggle flex items-center gap-2"
+                      [class.acciones-toggle-abierto]="menuAccionesAbiertoId === vacante.id"
+                      (click)="toggleMenuAcciones($event, vacante.id)"
                     >
-                      Cerrar vacante
+                      Acciones
+                      <span class="acciones-icono" aria-hidden="true"></span>
                     </button>
-                    <button
-                      class="btn-outline"
-                      (click)="abrirModalInforme(vacante)"
-                      [disabled]="accionEnProgresoId === vacante.id"
+                    <div
+                      *ngIf="menuAccionesAbiertoId === vacante.id"
+                      class="acciones-menu-panel"
+                      [ngStyle]="menuAccionesEstilos"
+                      (click)="$event.stopPropagation()"
                     >
-                      Generar informe de riesgo
-                    </button>
+                      <button
+                        type="button"
+                        class="acciones-menu-item"
+                        (click)="irAAsignacion(vacante)"
+                      >
+                        Agregar postulantes
+                      </button>
+                      <button
+                        type="button"
+                        class="acciones-menu-item"
+                        (click)="cerrarAsignacion(vacante)"
+                        [disabled]="accionEnProgresoId === vacante.id"
+                      >
+                        Cerrar asignacion
+                      </button>
+                      <button
+                        type="button"
+                        class="acciones-menu-item"
+                        (click)="cerrarVacante(vacante)"
+                        [disabled]="accionEnProgresoId === vacante.id"
+                      >
+                        Cerrar vacante
+                      </button>
+                      <button
+                        type="button"
+                        class="acciones-menu-item"
+                        (click)="abrirModalInforme(vacante)"
+                        [disabled]="accionEnProgresoId === vacante.id"
+                      >
+                        Generar informe de riesgo
+                      </button>
+                    </div>
                   </div>
                 </td>
               </tr>

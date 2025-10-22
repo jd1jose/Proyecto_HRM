@@ -106,6 +106,12 @@ export class VacantesService {
       .pipe(map((response) => response.data));
   }
 
+  actualizarEstadoVacante(id: number, estado: EstadoVacante): Observable<Vacante> {
+    return this.http
+      .put<ApiResponse<Vacante>>(`${this.baseUrl}/${id}`, { estado })
+      .pipe(map((response) => response.data));
+  }
+
   generarInformeRiesgo(id: number, postulanteIds: number[]): Observable<Vacante> {
     return this.http
       .post<ApiResponse<Vacante>>(`${this.baseUrl}/${id}/informe-riesgo`, { postulanteIds })
