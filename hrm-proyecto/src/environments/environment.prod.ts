@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://hrm-backend.onrender.com/api'
+  apiUrl: 'https://proyecto-hrm.onrender.com/api'
 };
