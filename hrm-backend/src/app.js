@@ -15,7 +15,7 @@ import informesRoutes from './routes/informes.routes.js';
 const app = express();
 app.use(express.json({ limit: '15mb' }));
 app.use(express.urlencoded({ extended: true, limit: '15mb' }));
-app.use(cors({ origin: 'http://localhost:4200', credentials: true }));
+app.use(cors({ origin: 'https://proyecto-hrm-front.onrender.com', credentials: true }));
 app.use('/files', express.static(path.resolve('expedientes')));
 
 // Evitar cache en endpoints de API y desactivar ETag (previene 304)
